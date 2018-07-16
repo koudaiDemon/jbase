@@ -18,14 +18,14 @@ public class Demo1 {
 //        Map<String,String> map = new HashMap<>();
 //        Map<String,String> map = new Hashtable<>(10);
 
-        List<Thread> list = new ArrayList<>();
+//        List<Thread> list = new ArrayList<>();
         for (int i = 0 ; i < thread_count ; i++) {
             Thread thread = new Thread(() -> {
                 if (map.size() < 50) {
                     map.put(Thread.currentThread().getName()+"key",Thread.currentThread().toString()+"value");
                 }
             });
-            list.add(thread);
+//            list.add(thread);
             thread.start();
         }
 

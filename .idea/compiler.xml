@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jbase-maven" target="1.8" />
       <module name="jbasemaven" target="1.8" />
     </bytecodeTargetLevel>
   </component>
