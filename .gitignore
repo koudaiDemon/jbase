@@ -26,3 +26,15 @@ hs_err_pid*
 .idea
 target
 *.iml
+
+.metadata
+.settings
+.classpath
+.project
+# Package Files #
+*.jar
+*.war
+*.ear
+*.swp
+datanucleus.log
+/bin/
