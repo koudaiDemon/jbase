@@ -39,7 +39,7 @@ public class Demo {
         // 邮件服务器smtp协议端口
         mail.setSmtpPort(25);
         // 邮箱账户
-        mail.setAuthentication("15527165793", "caiwei1213");
+        mail.setAuthentication("15527165793", "");
         // 邮件的字符集
         mail.setCharset("UTF-8");
         // 是否启用SSL
@@ -109,7 +109,7 @@ public class Demo {
                 new Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("15527165793", "caiwei1213");
+                        return new PasswordAuthentication("15527165793", "");
                     }
                 });
 
