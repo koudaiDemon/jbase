@@ -32,6 +32,7 @@
     </properties>
     <modules>
         <module>jbaseMaven</module>
+        <module>something</module>
     </modules>
     <dependencyManagement>
         <dependencies>

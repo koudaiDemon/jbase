@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jbasemaven" />
+        <module name="something" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jbase-maven" target="1.8" />
       <module name="jbasemaven" target="1.8" />
+      <module name="something" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
