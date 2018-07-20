@@ -52,7 +52,7 @@ public class Demo {
         mail.setFrom("koudaidemon@163.com");
 //        抄送
 //        mail.addReplyTo("metepec.service@ngux.com.mx");
-        String[] toList = {"976738029@qq.com"};
+        String[] toList = {"XXXXXXXXX@qq.com"};
         for (String to : toList) {
             // 收件人地址，可以设置多个
             mail.addTo(to);
