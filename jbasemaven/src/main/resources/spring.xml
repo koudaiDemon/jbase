@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="spring" />
+
+    <bean id="abstartJob" class="spring.AbstractJob" abstract="true">
+        <property name="demo" ref="demo"/>
+    </bean>
+    <bean id="demo" class="spring.Demo">
+        <property name="say" value="hello"></property>
+    </bean>
+
+    <!--<bean id="demoworld" class="spring.Demo">-->
+        <!--<property name="say" value="world"></property>-->
+    <!--</bean>-->
+    <!--<bean id="name" class="java.lang.String">-->
+        <!--<property name=""-->
+    <!--</bean>-->
+    <!--<bean id="job" class="spring.JobDemo" autowire="byName"></bean>-->
+
+    <bean id="action1" class="spring.Action">
+        <property name="level" value="1"/>
+    </bean>
+    <bean id="action2" class="spring.Action">
+        <property name="level" value="2"/>
+    </bean>
+    <bean id="action3" class="spring.Action">
+        <property name="level" value="3"/>
+    </bean>
+
+    <bean id="testList" class="spring.TestList">
+        <property name="list">
+            <list>
+                <ref bean="action2"/>
+                <ref bean="action1"/>
+                <ref bean="action3"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
