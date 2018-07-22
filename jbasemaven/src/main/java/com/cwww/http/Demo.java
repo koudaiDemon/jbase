@@ -18,7 +18,7 @@ public class Demo {
     public static void main(String[] args) throws Exception {
 
         HttpClient httpClient = new HttpClient();
-        GetMethod getMethod = new GetMethod("http://www.baidu.com");
+        GetMethod getMethod = new GetMethod("");
         getMethod.getParams().setParameter("http.socket.timeout", Integer.valueOf(100000));
 //        final StringRequestEntity e = new StringRequestEntity(request, contentType, "UTF-8");
 //        postMethod.setRequestEntity(e);
