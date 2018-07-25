@@ -69,7 +69,7 @@ public class Demo {
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         //创建比特矩阵(位矩阵)的QR码编码的字符串
-        BitMatrix byteMatrix = qrCodeWriter.encode("https://qr.95516.com/00010001/62124323515804413600603540226453", BarcodeFormat.QR_CODE, 128, 128, hintMap);
+        BitMatrix byteMatrix = qrCodeWriter.encode("https://qr.95516.com/00010001/62032433676989084193670397021779", BarcodeFormat.QR_CODE, 128, 128, hintMap);
         // 使BufferedImage勾画QRCode (matrixWidth 是行二维码像素点)
         int matrixWidth = byteMatrix.getWidth();
 
