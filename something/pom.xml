@@ -11,6 +11,10 @@
 
     <artifactId>something</artifactId>
 
+    <properties>
+        <google.zxing.version>3.3.0</google.zxing.version>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -75,6 +79,11 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpcomponents.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>${google.zxing.version}</version>
         </dependency>
     </dependencies>
 
