@@ -19,7 +19,7 @@ import java.util.Properties;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 两套邮件方法，一套通过jdk，一套通过apache
  * @date: 2018/6/28  15:27
  */
 public class Test {

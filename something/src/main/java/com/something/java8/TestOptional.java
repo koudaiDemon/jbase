@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description java8中的新特性Optional，用于去除NPE
  * @date: 2018/5/29  10:10
  */
 public class TestOptional {

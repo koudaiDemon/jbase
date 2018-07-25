@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description BlockingQueue 可以实现线程的阻塞，知道集合中有数据，类似于生产者消费者
  * @date: 2018/7/3  14:33
  */
 public class BlockingQueueDemo {

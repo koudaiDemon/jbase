@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 可以选择执行顺序的事件监听
  * @date: 2018/7/2  14:25
  */
 //@Component("testEventListener2")

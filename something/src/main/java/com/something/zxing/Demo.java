@@ -16,7 +16,7 @@ import java.util.Hashtable;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 二维码的创建
  * @date: 2018/7/25  13:11
  */
 public class Demo {

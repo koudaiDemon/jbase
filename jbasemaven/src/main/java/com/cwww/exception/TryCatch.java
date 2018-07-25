@@ -3,7 +3,7 @@ package com.cwww.exception;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description try catch的执行顺序
  * @date: 2018/6/1  11:07
  */
 public class TryCatch {

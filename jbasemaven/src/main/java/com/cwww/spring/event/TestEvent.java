@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationEvent;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 消息载体，时间
  * @date: 2018/7/2  14:22
  */
 public class TestEvent extends ApplicationEvent {

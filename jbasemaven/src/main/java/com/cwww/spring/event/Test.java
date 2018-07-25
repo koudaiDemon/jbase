@@ -6,7 +6,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 用于测试Spring 的event listener
  * @date: 2018/7/2  14:35
  */
 public class Test {

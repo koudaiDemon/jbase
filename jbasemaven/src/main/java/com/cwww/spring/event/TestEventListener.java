@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 消息监听者，异步的处理消息，可参考async包
  * @date: 2018/7/2  14:25
  */
 @Component("testEventListener")
