@@ -23,10 +23,16 @@ public class TestStatic {
     public static void main(String[] args) {
 
         //1.直接使用main方法,则会执行static{},(由于是在当前类中)
+        try {
+            Class.forName("com.cwww.test.TestStatic");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         //2.使用test方法，会执行test静态方法和static{}
         TestStatic.test();
         //3.只有当类被创建以后{}中的代码才会被执行
         TestStatic testStatic = new TestStatic();
+
     }
 
 }
