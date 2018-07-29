@@ -14,6 +14,7 @@
         <java.version>1.8</java.version>
         <compiler.version>3.5.1</compiler.version>
         <spring.version>4.3.14.RELEASE</spring.version>
+        <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
         <slf4j.version>1.7.21</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <fastjson.version>1.2.44</fastjson.version>
@@ -33,7 +34,9 @@
     <modules>
         <module>jbaseMaven</module>
         <module>something</module>
+        <module>spring-boot-demo</module>
     </modules>
+    <!--用于放子模块所需要的依赖-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -58,6 +61,18 @@
                 <version>${httpClient.version}</version>
             </dependency>
 
+            <!--添加spring-boot的支持-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-web</artifactId>-->
+                <!--<version>${spring-boot.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-test</artifactId>-->
+                <!--<version>${spring-boot.version}</version>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
         </dependencies>
     </dependencyManagement>
 

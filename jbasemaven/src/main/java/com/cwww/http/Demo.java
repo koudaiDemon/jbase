@@ -10,7 +10,7 @@ import java.net.ConnectException;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description apache http请求
  * @date: 2018/7/13  10:42
  */
 public class Demo {

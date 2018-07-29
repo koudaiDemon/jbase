@@ -7,7 +7,7 @@ import redis.clients.jedis.JedisPool;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 连接池
  * @date: 2018/6/4  11:37
  */
 public class TestSale {

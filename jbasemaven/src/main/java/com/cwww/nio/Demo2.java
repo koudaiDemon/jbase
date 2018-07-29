@@ -7,7 +7,7 @@ import java.nio.channels.FileChannel;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 多线程区别io与nio
  * @date: 2018/6/5  14:07
  */
 public class Demo2 {

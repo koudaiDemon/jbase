@@ -10,7 +10,7 @@ import java.nio.channels.FileChannel;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description nio的使用-filechannle+ByteBuffer
  * @date: 2018/6/5  10:43
  */
 public class Demo1 {

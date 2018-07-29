@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 空指针异常的处理
  * @date: 2018/7/9  12:13
  */
 public class TestNullPoint {

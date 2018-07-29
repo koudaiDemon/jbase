@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description JMX实现远程操控服务端，并实现属性的动态修改
  * @date: 2018/6/11  11:52
  */
 public class HelloServer {

@@ -8,7 +8,7 @@ import org.redisson.config.Config;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 通过redisson获取redis中的数据
  * @date: 2018/5/31  12:54
  */
 public class Demo2 {

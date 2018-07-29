@@ -7,7 +7,7 @@ import java.nio.channels.Pipe;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description Pipe管道，实现线程间的通信
  * @date: 2018/6/6  10:20
  */
 public class Demo7 {
