@@ -11,7 +11,7 @@ import java.util.concurrent.Executor;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 异步的线程配置
  * @date: 2018/7/2  15:12
  */
 @Configuration

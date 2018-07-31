@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description JAXB实现xml文件的创建和解析
  * @date: 2018/6/8  11:20
  */
 public class Test {

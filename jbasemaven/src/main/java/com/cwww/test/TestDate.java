@@ -22,7 +22,9 @@ public class TestDate {
         System.out.println(str);
         Calendar calendar = Calendar.getInstance();
 //        DateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", new Locale(System.getProperty("user.language")));
+        //date的toString方法,然后还原回Date类型
         DateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        //获取当前系统的语言
         System.out.println(System.getProperty("user.language"));
 //        Date parsedNow = null;
 

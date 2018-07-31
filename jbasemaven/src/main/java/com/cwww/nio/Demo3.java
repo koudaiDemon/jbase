@@ -9,7 +9,7 @@ import java.nio.channels.SelectionKey;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description nio读取数据，将数据读取到多个ByteBuffer
  * @date: 2018/6/5  16:42
  */
 public class Demo3 {

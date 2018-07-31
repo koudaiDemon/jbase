@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description hybris中的jdbc
  * @date: 2018/6/28  10:48
  */
 public class Test {

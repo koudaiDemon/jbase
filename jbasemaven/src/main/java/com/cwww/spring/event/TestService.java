@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description  事件发布者，有事务的操作
  * @date: 2018/7/2  14:28
  */
 @Service

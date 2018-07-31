@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description nio-Selector,网络编程，可以用于将一个selector注册到多个管道(并指定监控的类型)，实现对多个管道的监控
  * @date: 2018/6/5  18:00
  */
 public class Demo5 {

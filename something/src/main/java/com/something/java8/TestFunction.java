@@ -5,7 +5,7 @@ import java.util.function.Function;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description java8中Function的demo
  * @date: 2018/5/29  9:49
  */
 public class TestFunction {

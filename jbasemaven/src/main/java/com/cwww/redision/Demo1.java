@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 分布式锁的使用
  * @date: 2018/5/31  13:48
  */
 public class Demo1 {

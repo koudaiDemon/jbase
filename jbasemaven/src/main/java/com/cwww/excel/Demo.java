@@ -20,7 +20,7 @@ import java.util.Properties;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 通过poi实现excel的创建，并发送邮件附件
  * @date: 2018/7/12  12:26
  */
 public class Demo {

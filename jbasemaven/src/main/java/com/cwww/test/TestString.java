@@ -13,6 +13,47 @@ import java.util.Locale;
  */
 public class TestString {
 
+    /**
+     * 测试格式化
+     */
+    public void test(){
+        //用来测试str的format
+        String str = "hello,{0},{1},{2}";
+        str = String.format(str,"world",123,false);
+        System.out.println(str);
+
+        String nullStr = null;
+        System.out.println(nullStr == null);
+    }
+
+    /**
+     * 测试两种字符串格式化的时间
+     */
+    public void test1(){
+        long start = System.currentTimeMillis();
+        for (int i = 0 ; i < 1000 ; i++) {
+            String str = "hello,{0},{1},{2}";
+            //1.使用messageFormat进行格式化
+//            MessageFormat.format(str,"world",123,false);
+            //2.使用替换进行格式化
+            str.replace("{0}","world");
+            str.replace("{1}","123");
+            str.replace("{2}","false");
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("times:"+(end - start));
+    }
+
+    /**
+     * 测试国际化，主要测试墨西哥
+     */
+    public void test2(){
+        Locale locale = new Locale("es","ES");
+        System.out.println(locale);
+        System.out.println(Locale.CHINA);
+        System.out.println(Locale.CHINESE);
+    }
+
     public static void main(String[] args) {
 
 //        String str = "{0}1233456";
@@ -33,27 +74,6 @@ public class TestString {
 //        Locale.get
 
 
-//        Locale locale = new Locale("es","ES");
-//        System.out.println(locale);
-//        System.out.println(Locale.CHINA);
-//        System.out.println(Locale.CHINESE);
-
-//        long start = System.currentTimeMillis();
-//        for (int i = 0 ; i < 1000 ; i++) {
-//            String str = "hello,{0},{1},{2}";
-////            MessageFormat.format(str,"world",123,false);
-//            str.replace("{0}","world");
-//            str.replace("{1}","123");
-//            str.replace("{2}","false");
-//        }
-//        long end = System.currentTimeMillis();
-//        System.out.println("times:"+(end - start));
-        String str = "hello,{0},{1},{2}";
-        str = String.format(str,"world",123,false);
-        System.out.println(str);
-
-        String nullStr = null;
-        System.out.println(nullStr == null);
 
     }
 

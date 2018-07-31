@@ -8,14 +8,14 @@ import java.util.Map;
 /**
  * @author cWww
  * @Title
- * @Description
+ * @Description 测试map转json，值为数字
  * @date: 2018/3/19  13:52
  */
 public class TestJsonMap {
-    /*
 
-    public static void main(String[] args) {
-        final Map<String,Integer> map = new HashMap<String,Integer>(10);
+
+    public static void main(String[] args) throws Exception {
+        final Map<String,Integer> map = new HashMap<>(10);
         for (int i = 0; i < 10; i++) {
             map.put("str"+i,i);
         }
@@ -23,6 +23,6 @@ public class TestJsonMap {
         String json = mapper.writeValueAsString(map);
         System.out.println(json);
     }
-    */
+
 
 }

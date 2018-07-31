@@ -1,5 +1,8 @@
 package com.cwww.asyn;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -11,9 +14,10 @@ import java.util.concurrent.Future;
  * @date: 2018/7/3  11:26
  */
 public class Demo {
+    private static final Logger LOG = LoggerFactory.getLogger(Demo.class);
 
     public boolean test1(){
-        System.out.println("发邮件");
+        LOG.info("发邮件");
         return false;
     }
 
@@ -27,7 +31,7 @@ public class Demo {
                 } catch (Exception e) {
 
                 }
-                System.out.println("存数据");
+                LOG.info("存数据");
             }
         );
         return future;
