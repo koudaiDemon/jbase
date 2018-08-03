@@ -18,16 +18,19 @@ public class Demo {
 
     public static void main(String[] args) throws Exception {
 
-        User user = new User("0001","hello","world",new Date());
-        Class clazz = User.class;
-
-        Field[] fields = clazz.getFields();
-        fields = clazz.getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            Object obj = field.get(user);
-            LOGGER.info("name:{},value:{}",field.getName(),obj);
-        }
+//        User user = new User("0001","hello","world",new Date());
+//        Class clazz = User.class;
+//
+//        Field[] fields = clazz.getFields();
+//        fields = clazz.getDeclaredFields();
+//        for (Field field : fields) {
+//            field.setAccessible(true);
+//            Object obj = field.get(user);
+//            LOGGER.info("name:{},value:{}",field.getName(),obj);
+//            LOGGER.info("boolean:{}",obj instanceof Date);
+//        }
+        Double d = new Double(10);
+        LOGGER.info(d.toString());
     }
 
 }

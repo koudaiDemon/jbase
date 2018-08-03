@@ -73,7 +73,7 @@ public class TestString {
 
 //        Locale.get
 
-
+        new TestString().test2();
 
     }
 
