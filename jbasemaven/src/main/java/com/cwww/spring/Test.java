@@ -3,6 +3,7 @@ package com.cwww.spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import java.lang.reflect.Field;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Test {
 
 
 
-        ApplicationContext ac = new FileSystemXmlApplicationContext("src/main/resources/spring.xml");
+//        ApplicationContext ac = new FileSystemXmlApplicationContext("jbasemaven/src/main/resources/spring.xml");
 //        ApplicationContext ac = new FileSystemXmlApplicationContext();
 //        TestList testList = (TestList)ac.getBean("testList");
 //        List<Action> list = testList.getList();
@@ -26,9 +27,15 @@ public class Test {
 //        list.forEach(action -> {
 //            System.out.println(action.getLevel()+"======"+action.getName());
 //        });
-        JobDemo jobDemo = ac.getBean("job",JobDemo.class);
-        jobDemo.showInfo();
+//        JobDemo jobDemo = ac.getBean("job",JobDemo.class);
+//        jobDemo.showInfo();
 //        System.out.println(Item.SPRING.equals(Item.WINTER));
+
+        JobDemo jobDemo = new JobDemo(new Demo("hello"));
+//        System.out.println(jobDemo instanceof AbstractJob);
+
+
+
 
     }
 

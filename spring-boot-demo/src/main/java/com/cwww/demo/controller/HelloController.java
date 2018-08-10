@@ -1,13 +1,17 @@
 package com.cwww.demo.controller;
 
+import com.cwww.demo.dto.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author cWww
@@ -26,6 +30,11 @@ public class HelloController {
         return "hello";
     }
 
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public List<String> hello1(){
+        return Collections.singletonList("hello");
+    }
+
     @RequestMapping(value = "/helloWorld")
     public void helloWorld(HttpServletRequest httpServletRequest){
 
@@ -33,6 +42,12 @@ public class HelloController {
         LOGGER.info("httpServletRequest map:{}",httpServletRequest.getParameterMap());
         httpServletRequest.getParameterMap().forEach((k,v)->LOGGER.info("key:{},value:{}",k,v));
 
+    }
+
+    @RequestMapping(value = "/user",method = RequestMethod.POST)
+    public User user(@RequestBody User user){
+        LOGGER.info("user:{}",user);
+        return user;
     }
 
 }

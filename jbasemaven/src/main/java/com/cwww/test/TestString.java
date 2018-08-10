@@ -73,8 +73,13 @@ public class TestString {
 
 //        Locale.get
 
-        new TestString().test2();
+//        new TestString().test2();
 
+        StringBuilder stringBuilder = new StringBuilder("hello,");
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+
+        System.out.println(stringBuilder);
+//        System.out.println(stringBuilder1);
     }
 
 }
