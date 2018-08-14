@@ -1,7 +1,9 @@
 package com.something.java8;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -11,6 +13,8 @@ import java.util.stream.Collectors;
  * @date: 2018/8/14  12:26
  */
 public class TestStream {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestStream.class);
 
     public static void main(String[] args) {
 
@@ -29,12 +33,23 @@ public class TestStream {
         list.add(product5);
         list.add(product6);
 
+        //复制一个同等list
+        final List<Product> list2 = list.subList(0,list.size());
+
         List<String> collect = list.stream().map(e -> e.getBaseProduct().getCode()).collect(Collectors.toList());
 
         List<String> distinctCollect = list.stream().map(e -> e.getBaseProduct().getCode()).distinct().collect(Collectors.toList());
 
-        System.out.println("未去重的spu"+collect);
-        System.out.println("去重以后的spu"+distinctCollect);
+        Set<String> set = list.stream().map(e -> e.getBaseProduct().getCode()).collect(Collectors.toSet());
+
+        Map<String, List<Product>> map = list.stream().collect(Collectors.groupingBy(e -> e.getBaseProduct().getCode()));
+
+//        list.stream().flatMap()
+
+        LOGGER.info("也可以达到去重,spuSet:{}",set);
+        LOGGER.info("按照spu进行Map集合,size:{},map:{}",map.size(),map);
+        LOGGER.info("未去重的spu:{}",collect);
+        LOGGER.info("去重以后的spu:{}",distinctCollect);
 
     }
 
