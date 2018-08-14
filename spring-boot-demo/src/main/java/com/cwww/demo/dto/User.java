@@ -1,6 +1,7 @@
 package com.cwww.demo.dto;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * @author cWww
@@ -13,6 +14,7 @@ public class User implements Serializable {
     private String name;
     private String nickname;
     private String country;
+    private Map<String,String> local;
 
     public User() {
     }
@@ -47,12 +49,21 @@ public class User implements Serializable {
         this.country = country;
     }
 
+    public Map<String, String> getLocal() {
+        return local;
+    }
+
+    public void setLocal(Map<String, String> local) {
+        this.local = local;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", country='" + country + '\'' +
+                ", local=" + local +
                 '}';
     }
 }
