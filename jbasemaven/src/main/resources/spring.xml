@@ -2,14 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <context:component-scan base-package="spring" />
+    <context:component-scan base-package="com.cwww" />
 
-    <bean id="abstartJob" class="spring.AbstractJob" abstract="true">
+    <bean id="abstartJob" class="com.cwww.spring.AbstractJob" abstract="true">
         <property name="demo" ref="demo"/>
     </bean>
-    <bean id="demo" class="spring.Demo">
+    <bean id="demo" class="com.cwww.spring.Demo">
         <property name="say" value="hello"></property>
     </bean>
 
@@ -21,24 +22,31 @@
     <!--</bean>-->
     <!--<bean id="job" class="spring.JobDemo" autowire="byName"></bean>-->
 
-    <bean id="action1" class="spring.Action">
+    <bean id="action1" class="com.cwww.spring.Action">
         <property name="level" value="1"/>
     </bean>
-    <bean id="action2" class="spring.Action">
+    <bean id="action2" class="com.cwww.spring.Action">
         <property name="level" value="2"/>
     </bean>
-    <bean id="action3" class="spring.Action">
+    <bean id="action3" class="com.cwww.spring.Action">
         <property name="level" value="3"/>
     </bean>
 
-    <bean id="testList" class="spring.TestList">
-        <property name="list">
-            <list>
-                <ref bean="action2"/>
-                <ref bean="action1"/>
-                <ref bean="action3"/>
-            </list>
+    <bean id="testList" class="com.cwww.spring.TestList">
+        <property name="list" ref="list">
         </property>
     </bean>
+
+    <util:list id="list">
+        <!--<value type="java.lang.String">abc</value>-->
+        <!--<value type="java.lang.String">def</value>-->
+        <!--<value type="java.lang.String">a</value>-->
+        <ref bean="action1"/>
+        <ref bean="action2"/>
+        <ref bean="action3"/>
+        <bean id="action4" class="com.cwww.spring.Action">
+            <property name="level" value="4"/>
+        </bean>
+    </util:list>
 
 </beans>
