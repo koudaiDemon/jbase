@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author cWww
@@ -46,6 +47,12 @@ public class TestStream {
 
 //        list.stream().flatMap()
 
+        //map与flatmap的区别,map会返回一个指定的类型，而flatmap返回的还是流式数据
+        List<Product> sku1 = Stream.of(list, list2).flatMap(e -> e.stream().filter(item -> item.getCode().equalsIgnoreCase("sku1"))).collect(Collectors.toList());
+
+
+
+        LOGGER.info("flatMap:{}",sku1);
         LOGGER.info("也可以达到去重,spuSet:{}",set);
         LOGGER.info("按照spu进行Map集合,size:{},map:{}",map.size(),map);
         LOGGER.info("未去重的spu:{}",collect);
