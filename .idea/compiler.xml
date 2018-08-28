@@ -6,15 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="jbase-maven" />
-        <module name="jbasemaven" />
+        <module name="jbaseMaven" />
         <module name="something" />
         <module name="spring-boot-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jbase-maven" target="1.8" />
-      <module name="jbasemaven" target="1.8" />
+      <module name="jbaseMaven" target="1.8" />
       <module name="something" target="1.8" />
       <module name="spring-boot-demo" target="1.8" />
     </bytecodeTargetLevel>
