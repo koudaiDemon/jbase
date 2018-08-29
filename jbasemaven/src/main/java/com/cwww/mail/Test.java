@@ -4,6 +4,7 @@ import com.sun.mail.util.MailSSLSocketFactory;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.MultiPartEmail;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -62,7 +63,7 @@ public class Test {
                 new Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("metepec.service@ngux.com.mx", "");
+                        return new PasswordAuthentication("metepec.service@ngux.com.mx", "Rus#.H0ur!");
                     }
                 });
 
@@ -110,7 +111,7 @@ public class Test {
 
     public static void apache() throws Exception {
         HtmlEmail mail = new HtmlEmail();
-        // 邮件服务器域名
+        // 邮件服务器域名smtp.office365.com
         mail.setHostName("smtp.163.com");
         // 邮件服务器smtp协议端口
         mail.setSmtpPort(25);
@@ -122,22 +123,27 @@ public class Test {
 //        properties.put("mail.smtp.socketFactory.fallback", "true");
 //        mail.setStartTLSEnabled(true);
         // 是否启用SSL
-        mail.setSSLOnConnect(true);
+        mail.setStartTLSEnabled(true);
+//        mail.setSSLOnConnect(true);
         // 若启用，设置smtp协议的SSL端口号
-        mail.setSslSmtpPort("994");
+//        mail.setSslSmtpPort("994");
 
         // 发件人地址
-        mail.setFrom("koudaidemon@163.com");
+        mail.setFrom("koudaidemon@163.com","koudaidemon");
+//        mail.setFrom("","","");
 //        抄送
 //        mail.addReplyTo("metepec.service@ngux.com.mx");
-        String[] toList = {"wei.cai@hand-china.com"};
+        String[] toList = {"976738029@qq.com"};
         for (String to : toList) {
             // 收件人地址，可以设置多个
             mail.addTo(to);
         }
         // 邮件主题
-        mail.setSubject("test0001");
-        String html = "<h1>test0628</h1>";
+        mail.setSubject("Éxito de las compras");
+//        mail.addReplyTo("metepec.service@ngux.com.mx","servicioaexploradores@ngux.com.mx");
+        String html = "<p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste {1} entradas para {0}.</p> <p>Tus tickets fueron procesados correctamente. Tu número de compra es: {2}</p> <p>Válido únicamente para la fecha emitida. Acude al área de ticketing del centro NGUX  y presenta el código QR o del voucher. Los nombres de los exploradores son {3}</p> <p>Código de explorador: {4}</p> <p>Nos vemos pronto.</p>";
+        html = "<html><head></head><body bgcolor=\"#ffffff\"\t\t\t<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#ffffff\"<tr>\t<td>&nbsp;</td></tr><tr><td align=\"center\" valign=\"top\"><table width=\"610\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#fff\"><tr><td align=\"center\" valign=\"top\" bgcolor=\"#FFFFFF\"><table width=\"570\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\"><tr>\t<td valign=\"middle\">&nbsp;</td></tr><tr>\t</tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">\t\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t\t</font>\t</td></tr><tr>\t<td>&nbsp;</td></tr><tr><td align=\"left\" valign=\"top\"><p style=\"margin:2px 0\"><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><b>Estimado test001 {1}</b>,</font></p>    <p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste 1 entradas para 2018-08-21.</p> <p>Tus tickets fueron procesados correctamente. Tu número de compra es: 00012003</p> <p>Válido únicamente para la fecha emitida. Acude al área de ticketing del centro NGUX  y presenta el código QR o del voucher. Los nombres de los exploradores son test001</p> <p>Código de explorador: 000000136</p> <p>Nos vemos pronto.</p></font></p>    <p><img src=\"null/qr/create?text=000000136\"/></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Muchas gracias</font></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Servicio al cliente</font></p></td></tr><tr>\t<td>&nbsp;</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t</td></tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td>&nbsp;</td></tr></table></td></tr></table></td></tr><tr>\t<td>&nbsp;</td></tr></table></body></html>";
+        html = "<html><head></head><body bgcolor=\"#ffffff\"\t\t\t<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#ffffff\"<tr>\t<td>&nbsp;</td></tr><tr><td align=\"center\" valign=\"top\"><table width=\"610\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#fff\"><tr><td align=\"center\" valign=\"top\" bgcolor=\"#FFFFFF\"><table width=\"570\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\"><tr>\t<td valign=\"middle\">&nbsp;</td></tr><tr>\t</tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">\t\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t\t</font>\t</td></tr><tr>\t<td>&nbsp;</td></tr><tr><td align=\"left\" valign=\"top\"><p style=\"margin:2px 0\"><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><b>Estimado test001</b>,</font></p>    <p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste 1 entradas para 2018-08-21.</p> <p>Tus tickets fueron procesados correctamente. Tu número de compra es: 00013001</p> <p>Válido únicamente para la fecha emitida. Acude al área de ticketing del centro NGUX  y presenta el código QR o del voucher. Los nombres de los exploradores son test001</p> <p>Código de explorador: 000011125</p> <p>Nos vemos pronto.</p></font></p>    <p><img src=\"https://ip2-web-elb-1173202444.cn-north-1.elb.amazonaws.com.cn/hepreport/qr/create?text=000011125\"/></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Muchas gracias</font></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Servicio al cliente</font></p></td></tr><tr>\t<td>&nbsp;</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t</td></tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td>&nbsp;</td></tr></table></td></tr></table></td></tr><tr>\t<td>&nbsp;</td></tr></table></body></html>";
         // 邮件正文
         mail.setHtmlMsg(html);
         // 发送邮件
@@ -146,12 +152,12 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
 
-        EmailAttachment emailAttachment = new EmailAttachment();
+//        EmailAttachment emailAttachment = new EmailAttachment();
 //        File file = new File();
-        FileInputStream fileInputStream = new FileInputStream(new File(""));
+//        FileInputStream fileInputStream = new FileInputStream(new File(""));
         
-        DataSource dataSource = new FileDataSource(new File(""));
-
+//        DataSource dataSource = new FileDataSource(new File(""));
+        apache();
     }
 
 }

@@ -1,12 +1,9 @@
-package com.cwww.concurrent;
+package com.cwww.concurrent.lock;
 
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-import java.util.Enumeration;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -63,6 +60,7 @@ public class LockDemo {
 
     public static void test(){
         Lock lock = new ReentrantLock();
+        Condition condition = lock.newCondition();
         lock.lock();
         try {
             LOGGER.info(Thread.currentThread().getName()+"锁住了test()");

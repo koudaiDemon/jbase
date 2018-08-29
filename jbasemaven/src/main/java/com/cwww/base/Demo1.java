@@ -21,13 +21,13 @@ public class Demo1 {
 
 //        Map<String,String> map = new HashMap<>(10);
 
-        List<Product> list = new ArrayList<>();
-        Product product = new Product("123",null);
-        for (int i = 0 ; i < 3 ; i++) {
-            product.setCode("code-"+i);
-            list.add(product);
-        }
-        System.out.println(JSON.toJSONString(list));
+//        List<Product> list = new ArrayList<>();
+//        Product product = new Product("123",null);
+//        for (int i = 0 ; i < 3 ; i++) {
+//            product.setCode("code-"+i);
+//            list.add(product);
+//        }
+//        System.out.println(JSON.toJSONString(list));
 //        list.add(product);
 //        map.put("123","123");
 //        Locale locale = new Locale("es");
@@ -49,7 +49,41 @@ public class Demo1 {
 //        String next = list.iterator().next();
 //        System.out.println(next);
 
+        System.out.println(addressResolution("湖北省武汉市洪山区"));
+        System.out.println(addressResolution("北京北京市海淀区西土城路十号北京邮电大学"));
     }
+
+    /**
+     * 解析地址
+     * @author lin
+     * @param address
+     * @return
+     */
+    public static List<Map<String,String>> addressResolution(String address){
+        String regex="((?<province>[^省]+省|.+自治区)|上海|北京|天津|重庆)(?<city>[^市]+市|.+自治州)(?<county>[^县]+县|.+区|.+镇|.+局)?(?<town>[^区]+区|.+镇)?(?<village>.*)";
+//        String regex = "(?<province>[^省]+自治区|.*?省|.*?行政区|.*?市)(?<city>[^市]+自治州|.*?地区|.*?行政单位|.+盟|市辖区|.*?市|.*?县)(?<county>[^县]+县|.+区|.+市|.+旗|.+海域|.+岛)?(?<town>[^区]+区|.+镇)?(?<village>.*)";
+//        regex = "(?<province>[^省]+自治区|.*?省|.*?行政区|.*?市)(?<city>[^市]+自治州|.*?区|.*?行政单位|.+盟|市辖区|.*?市|.*?县)(?<county>[^县]+县|.+区|.+市|.+旗|.+海域|.+岛)?(?<town>[^区]+区|.+镇)?(?<village>.*)";
+        Matcher m = Pattern.compile(regex).matcher(address);
+        String province = null,city = null,county = null,town = null,village = null;
+        List<Map<String,String>> table = new ArrayList<Map<String,String>>();
+        Map<String,String> row = null;
+        while(m.find()){
+            row = new LinkedHashMap<String,String>();
+            province = m.group("province");
+            row.put("province", province==null?"":province.trim());
+            city = m.group("city");
+            row.put("city", city==null?"":city.trim());
+            county = m.group("county");
+            row.put("county", county==null?"":county.trim());
+            town = m.group("town");
+            row.put("town", town==null?"":town.trim());
+            village = m.group("village");
+            row.put("village", village==null?"":village.trim());
+            table.add(row);
+        }
+        return table;
+    }
+
 
     public void test(){
         System.out.println("<p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste {1} entradas para {0}.</p><p>Tus tickets fueron cancelados. Tu número de compra es: {3},</p><p>Los exploradores son {4},Numero de cancelación : {5}.</p><p>e esperamos pronto.</p>".length());

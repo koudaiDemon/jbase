@@ -36,3 +36,4 @@ target
 *.swp
 datanucleus.log
 /bin/
+/.idea/compiler.xml
