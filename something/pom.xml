@@ -13,6 +13,7 @@
 
     <properties>
         <google.zxing.version>3.3.0</google.zxing.version>
+        <ehcache.version>2.10.2</ehcache.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,11 @@
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
             <version>${google.zxing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
         </dependency>
     </dependencies>
 

@@ -89,6 +89,13 @@
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!--测试包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Spring IOC的基础实现，包含访问配置文件、创建和管理bean等 -->
         <dependency>
             <groupId>org.springframework</groupId>
