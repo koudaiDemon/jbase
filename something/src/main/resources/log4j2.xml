@@ -38,19 +38,11 @@ private static final Logger logger = LogManager.getLogger(实际类名.class.get
 
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <loggers>
+        <Logger name="com.something.bigdemo" level="TRACE"
+                additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
         <!--建立一个默认的root的logger-->
-        <!--<Logger name="org.apache.log4j.xml" level="INFO"-->
-                <!--additivity="false">-->
-            <!--<AppenderRef ref="Console" />-->
-        <!--</Logger>-->
-        <Logger name="concurrent.Demo2" level="DEBUG"
-                additivity="false">
-            <AppenderRef ref="Console" />
-        </Logger>
-        <Logger name="concurrent" level="DEBUG"
-                additivity="false">
-            <AppenderRef ref="Console" />
-        </Logger>
         <Root level="INFO">
             <AppenderRef ref="Console" />
         </Root>
