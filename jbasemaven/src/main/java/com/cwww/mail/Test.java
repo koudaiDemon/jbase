@@ -1,6 +1,7 @@
 package com.cwww.mail;
 
 import com.sun.mail.util.MailSSLSocketFactory;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.MultiPartEmail;
@@ -63,7 +64,7 @@ public class Test {
                 new Authenticator() {
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("metepec.service@ngux.com.mx", "Rus#.H0ur!");
+                        return new PasswordAuthentication("metepec.service@ngux.com.mx", "");
                     }
                 });
 
@@ -76,7 +77,7 @@ public class Test {
             message.setFrom(new InternetAddress("metepec.service@ngux.com.mx"));
 
             // Set the recipient address
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("wei.cai@hand-china.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(""));
 
             // Add the subject link
             message.setSubject("Testing Subject");
@@ -112,11 +113,11 @@ public class Test {
     public static void apache() throws Exception {
         HtmlEmail mail = new HtmlEmail();
         // 邮件服务器域名smtp.office365.com
-        mail.setHostName("smtp.163.com");
+        mail.setHostName("smtp.office365.com");
         // 邮件服务器smtp协议端口
-        mail.setSmtpPort(25);
+        mail.setSmtpPort(587);
         // 邮箱账户
-        mail.setAuthentication("15527165793", "");
+        mail.setAuthentication("metepec.service@ngux.com.mx", "");
         // 邮件的字符集
         mail.setCharset("UTF-8");
 //        Properties properties = new Properties();
@@ -129,21 +130,22 @@ public class Test {
 //        mail.setSslSmtpPort("994");
 
         // 发件人地址
-        mail.setFrom("koudaidemon@163.com","koudaidemon");
+        mail.setFrom("metepec.service@ngux.com.mx","mex");
 //        mail.setFrom("","","");
 //        抄送
 //        mail.addReplyTo("metepec.service@ngux.com.mx");
-        String[] toList = {"976738029@qq.com"};
+        String[] toList = {"yuanyuan.liao@hand-china.com"};
         for (String to : toList) {
             // 收件人地址，可以设置多个
             mail.addTo(to);
         }
         // 邮件主题
-        mail.setSubject("Éxito de las compras");
+        mail.setSubject("User Registration");
 //        mail.addReplyTo("metepec.service@ngux.com.mx","servicioaexploradores@ngux.com.mx");
         String html = "<p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste {1} entradas para {0}.</p> <p>Tus tickets fueron procesados correctamente. Tu número de compra es: {2}</p> <p>Válido únicamente para la fecha emitida. Acude al área de ticketing del centro NGUX  y presenta el código QR o del voucher. Los nombres de los exploradores son {3}</p> <p>Código de explorador: {4}</p> <p>Nos vemos pronto.</p>";
         html = "<html><head></head><body bgcolor=\"#ffffff\"\t\t\t<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#ffffff\"<tr>\t<td>&nbsp;</td></tr><tr><td align=\"center\" valign=\"top\"><table width=\"610\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#fff\"><tr><td align=\"center\" valign=\"top\" bgcolor=\"#FFFFFF\"><table width=\"570\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\"><tr>\t<td valign=\"middle\">&nbsp;</td></tr><tr>\t</tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">\t\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t\t</font>\t</td></tr><tr>\t<td>&nbsp;</td></tr><tr><td align=\"left\" valign=\"top\"><p style=\"margin:2px 0\"><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><b>Estimado test001 {1}</b>,</font></p>    <p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste 1 entradas para 2018-08-21.</p> <p>Tus tickets fueron procesados correctamente. Tu número de compra es: 00012003</p> <p>Válido únicamente para la fecha emitida. Acude al área de ticketing del centro NGUX  y presenta el código QR o del voucher. Los nombres de los exploradores son test001</p> <p>Código de explorador: 000000136</p> <p>Nos vemos pronto.</p></font></p>    <p><img src=\"null/qr/create?text=000000136\"/></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Muchas gracias</font></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Servicio al cliente</font></p></td></tr><tr>\t<td>&nbsp;</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t</td></tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td>&nbsp;</td></tr></table></td></tr></table></td></tr><tr>\t<td>&nbsp;</td></tr></table></body></html>";
         html = "<html><head></head><body bgcolor=\"#ffffff\"\t\t\t<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#ffffff\"<tr>\t<td>&nbsp;</td></tr><tr><td align=\"center\" valign=\"top\"><table width=\"610\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#fff\"><tr><td align=\"center\" valign=\"top\" bgcolor=\"#FFFFFF\"><table width=\"570\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\"><tr>\t<td valign=\"middle\">&nbsp;</td></tr><tr>\t</tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">\t\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t\t</font>\t</td></tr><tr>\t<td>&nbsp;</td></tr><tr><td align=\"left\" valign=\"top\"><p style=\"margin:2px 0\"><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><b>Estimado test001</b>,</font></p>    <p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><p>【Bienvenido a National Geographic Ultimate Explorer (NGUX)】Somos National Geographic Ultimate Explorer. Compraste 1 entradas para 2018-08-21.</p> <p>Tus tickets fueron procesados correctamente. Tu número de compra es: 00013001</p> <p>Válido únicamente para la fecha emitida. Acude al área de ticketing del centro NGUX  y presenta el código QR o del voucher. Los nombres de los exploradores son test001</p> <p>Código de explorador: 000011125</p> <p>Nos vemos pronto.</p></font></p>    <p><img src=\"https://ip2-web-elb-1173202444.cn-north-1.elb.amazonaws.com.cn/hepreport/qr/create?text=000011125\"/></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Muchas gracias</font></p><p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Servicio al cliente</font></p></td></tr><tr>\t<td>&nbsp;</td></tr><tr>\t<td align=\"center\" valign=\"middle\">\t\t<a href=\"http://localhost:9001?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t</td></tr><tr>\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t</td></tr><tr>\t<td>&nbsp;</td></tr></table></td></tr></table></td></tr><tr>\t<td>&nbsp;</td></tr></table></body></html>";
+        html = "<html>\t<head>\t</head>\t<body bgcolor=\"#ffffff\"\t<table width=\"100%\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bgcolor=\"#ffffff\">\t\t<tr>\t\t\t<td>&nbsp;</td>\t\t</tr>\t\t<tr>\t\t\t<td align=\"center\" valign=\"top\">\t\t\t\t<table width=\"610\" border=\"0\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#fff\">\t\t\t\t\t<tr>\t\t\t\t\t\t<td align=\"center\" valign=\"top\" bgcolor=\"#FFFFFF\">\t\t\t\t\t\t\t<table width=\"570\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td valign=\"middle\">&nbsp;</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t\t\t\t\t\t\t\t<font color=\"#FFFFFF\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"> &nbsp;&nbsp;</font>\t\t\t\t\t\t\t\t\t</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td align=\"center\" valign=\"middle\"><a href=\"http://localhost:33801?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a></td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td>&nbsp;</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td align=\"left\" valign=\"top\">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                                        <p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><b>Hello,dear explorer yvonne</b>,</font></p>\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\"><p>【Welcome to National Geographic Ultimate Explorer (NGUX)】</p><p>Your account was registered correctly and your explorerID is:ssiq4pji</p><p>The registered email is: yuanyuan.liao@hand-china.com</p></font></p>                                        <p><font color=\"#666666\" size=\"2\" face=\"Arial, Helvetica, sans-serif\">Many Thanks</font></p>                                        \t\t\t\t\t\t\t\t\t</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td>&nbsp;</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td align=\"center\" valign=\"middle\">\t\t\t\t\t\t\t\t\t\t<a href=\"http://localhost:33801?clear=true&site=ip2mex\" style=\"display:block; margin-top:10px;margin-bottom:10px;\"></a>\t\t\t\t\t\t\t\t\t</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t\t<tr>\t\t\t\t\t\t\t\t\t<td height=\"30\" align=\"right\" valign=\"middle\" bgcolor=\"#000000\">\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\t\t\t\t\t\t\t\t</tr>\t\t\t\t\t\t\t</table>\t\t\t\t\t\t</td>\t\t\t\t\t</tr>\t\t\t\t</table>\t\t\t</td>\t\t</tr>\t</table></body></html>\n";
         // 邮件正文
         mail.setHtmlMsg(html);
         // 发送邮件
@@ -157,7 +159,10 @@ public class Test {
 //        FileInputStream fileInputStream = new FileInputStream(new File(""));
         
 //        DataSource dataSource = new FileDataSource(new File(""));
-        apache();
+//        apache();
+        System.out.println(StringUtils.isEmpty("**************".replace("*","")));
+
+        System.out.println("abc".replace("*",""));
     }
 
 }

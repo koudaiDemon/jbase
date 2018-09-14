@@ -91,6 +91,12 @@
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
         </dependency>
+        <!--Spring integration-->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
         <!--junit -->
         <dependency>

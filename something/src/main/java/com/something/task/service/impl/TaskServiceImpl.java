@@ -26,25 +26,30 @@ import redis.clients.jedis.Jedis;
  * @date: 2018/9/4  11:47
  */
 @Service("taskService")
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService,ApplicationContextAware{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskServiceImpl.class);
 
     @Autowired
     private TaskStrategy taskStrategy;
 
+    private ApplicationContext applicationContext;
+
     @Override
     public void scheduleTask(Task task) {
         if (task.isRunCluster()) {
-            final Node node = ClusterManager.getCurrentNode();
             Jedis jedis = RedisUtil.getInstance().getJedis();
             LOGGER.info("存入数据库:{}",JSON.toJSONString(task));
             jedis.set("node-"+task.getNodeId(), JSON.toJSONString(task));
             TaskEvent taskEvent = new TaskEvent(Integer.valueOf(System.getProperty(Constant.CLUSTER_KEY)),task.getGroups());
-            node.sendMsg(null,taskEvent);
+            applicationContext.publishEvent(taskEvent);
         } else {
             taskStrategy.run(task);
         }
     }
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }
