@@ -1,5 +1,6 @@
 package com.cwww.spring;
 
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -18,11 +19,10 @@ public class Test {
     public static void main(String[] args) {
 
 
-
-//        ApplicationContext ac = new FileSystemXmlApplicationContext("jbasemaven/src/main/resources/spring.xml");
-//        ApplicationContext ac = new FileSystemXmlApplicationContext();
-//        TestList testList = (TestList)ac.getBean("testList");
-//        List<Action> list = testList.getList();
+        ApplicationContext ac = new FileSystemXmlApplicationContext("jbasemaven/src/main/resources/spring.xml");
+        List listDemo = ac.getBean("listDemo2", List.class);
+        System.out.println(listDemo);
+        //        List<Action> list = testList.getList();
 //        list.sort(Comparator.comparing(Action::getLevel));
 //        list.forEach(action -> {
 //            System.out.println(action.getLevel()+"======"+action.getName());
@@ -31,7 +31,7 @@ public class Test {
 //        jobDemo.showInfo();
 //        System.out.println(Item.SPRING.equals(Item.WINTER));
 
-        JobDemo jobDemo = new JobDemo(new Demo("hello"));
+//        JobDemo jobDemo = new JobDemo(new Demo("hello"));
 //        System.out.println(jobDemo instanceof AbstractJob);
 
 

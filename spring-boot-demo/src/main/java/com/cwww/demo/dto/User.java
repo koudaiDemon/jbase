@@ -1,6 +1,7 @@
 package com.cwww.demo.dto;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +16,9 @@ public class User implements Serializable {
     private String nickname;
     private String country;
     private Map<String,String> local;
+    private List<Address> addresses;
+    private Integer age;
+    private Double weight;
 
     public User() {
     }
@@ -55,6 +59,30 @@ public class User implements Serializable {
 
     public void setLocal(Map<String, String> local) {
         this.local = local;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
     @Override

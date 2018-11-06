@@ -1,6 +1,7 @@
 package com.cwww.nio;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -23,30 +24,39 @@ public class Demo5 {
         socketChannel.connect(new InetSocketAddress(9999));
         socketChannel.configureBlocking(false);
         SelectionKey key = socketChannel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(256);
 
-//        socketChannel.read(ByteBuffer.allocate(48));
+//        if (0 == selector.select()) {
+//            continue;
+//        }
+        Set<SelectionKey> set = selector.keys();
+        for (SelectionKey e : set) {
 
-        while (true) {
-            if (0 == selector.select()) {
-                continue;
+            if (e.isAcceptable()) {
+
             }
-            Set<SelectionKey> set = selector.keys();
-            set.forEach(e -> {
-                if (e.isAcceptable()) {
-                    System.out.println("接收");
+            if (e.isConnectable()) {
+                System.out.println("链接");
+            }
+            if (e.isReadable()) {
+                try {
+                    int read = socketChannel.read(byteBuffer);
+                    while (-1 != read) {
+                        System.out.println(new String(byteBuffer.array(),0,read));
+                        byteBuffer.flip();
+                        read = socketChannel.read(byteBuffer);
+                    }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
                 }
-                if (e.isConnectable()) {
-                    System.out.println("链接");
-                }
-                if (e.isReadable()) {
-                    System.out.println("可读");
-                }
-                if (e.isWritable()) {
-                    System.out.println("可写");
-                }
-            });
+                break;
+            }
+            if (e.isWritable()) {
+                System.out.println("可写");
+            }
         }
-
+        selector.close();
+        socketChannel.close();
 //        RandomAccessFile aFile = new RandomAccessFile(new File("src/main/resources/data/nio-data.txt"), "rw");
 //        FileChannel inChannel = aFile.getChannel();
 //        Selector selector = Selector.open();

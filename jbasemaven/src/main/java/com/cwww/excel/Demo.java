@@ -51,7 +51,7 @@ public class Demo {
         mail.setFrom("koudaidemon@163.com");
 //        抄送
 //        mail.addReplyTo("metepec.service@ngux.com.mx");
-        String[] toList = {"wei.cai@hand-china.com"};
+        String[] toList = {"xiang.zhao@hand-china.com"};
         for (String to : toList) {
             // 收件人地址，可以设置多个
             mail.addTo(to);
@@ -205,7 +205,9 @@ public class Demo {
 //        workbook.write(xlsStream);
 //        fileInputStream.flush();
 //        fileInputStream.close();
-        Demo.apache(dataSource);
+        for (int i = 0 ;i < 20;i++) {
+            Demo.apache(dataSource);
+        }
 
 
 //        String type = null;
