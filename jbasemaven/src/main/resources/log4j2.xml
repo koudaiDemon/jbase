@@ -51,7 +51,7 @@ private static final Logger logger = LogManager.getLogger(实际类名.class.get
                 additivity="false">
             <AppenderRef ref="Console" />
         </Logger>
-        <Root level="DEBUG">
+        <Root level="INFO">
             <AppenderRef ref="Console" />
         </Root>
     </loggers>

@@ -78,7 +78,7 @@ public class Test {
                 "\t\"datas\":\n" +
                 "\t\n" +
                 "\t\t{\n" +
-                "\t\t\"Code\":\"1231\",\n" +
+                "\t\t\"Code\":1231,\n" +
                 "\t\t\"signDate\":\"123123\",\n" +
                 "\t\t\"package\":\"123\"\n" +
                 "\t\t}\n" +

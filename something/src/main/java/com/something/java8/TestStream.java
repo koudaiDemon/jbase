@@ -58,6 +58,17 @@ public class TestStream {
         LOGGER.info("未去重的spu:{}",collect);
         LOGGER.info("去重以后的spu:{}",distinctCollect);
 
+        Collection<String> strings = Arrays.asList("aaaa","bbbb",null);
+
+        List<Integer> collect1 = strings.stream().filter(Objects::nonNull).map(String::length).collect(Collectors.toList());
+
+        collect1.add(null);
+
+        final Set<Byte> collect2 = collect1.stream().map(Integer::byteValue).collect(Collectors.toSet());
+
+        System.out.println(collect1);
+        System.out.println(collect2);
+
     }
 
 }
