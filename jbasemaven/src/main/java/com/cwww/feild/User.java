@@ -1,5 +1,6 @@
 package com.cwww.feild;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @Description
  * @date: 2018/7/31  11:29
  */
-public class User {
+public class User implements Serializable {
 
     private String uid;
     private String username;

@@ -1,12 +1,9 @@
 package com.cwww.spring;
 
 
+import com.cwww.spring.ListDemo.ListDemo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-
-import java.lang.reflect.Field;
-import java.util.Comparator;
-import java.util.List;
 
 /**
  * @author cWww
@@ -20,8 +17,12 @@ public class Test {
 
 
         ApplicationContext ac = new FileSystemXmlApplicationContext("jbasemaven/src/main/resources/spring.xml");
-        List listDemo = ac.getBean("listDemo2", List.class);
-        System.out.println(listDemo);
+//        List listDemo = ac.getBean("listDemo2", List.class);
+        final ListDemo bean = ac.getBean(ListDemo.class);
+        System.out.println(bean);
+
+//        final Object demo = ac.getBean("ListDemo");
+//        System.out.println(demo);
         //        List<Action> list = testList.getList();
 //        list.sort(Comparator.comparing(Action::getLevel));
 //        list.forEach(action -> {

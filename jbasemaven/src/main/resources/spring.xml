@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
@@ -13,10 +13,30 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd
            http://www.springframework.org/schema/util
-           http://www.springframework.org/schema/util/spring-util.xsd">
+           http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!--<context:component-scan base-package="com.cwww" />-->
+    <context:component-scan base-package="com.cwww.spring.ListDemo;com.cwww.spring.aop" />
     <import resource="spring-demo.xml"/>
+    <bean id="demo" class="com.cwww.spring.Demo"/>
+
+    <bean id="action1" class="com.cwww.spring.ListDemo.ActionDemo1"/>
+    <bean id="action2" class="com.cwww.spring.ListDemo.ActionDemo2"/>
+
+    <bean id="listDemo" class="com.cwww.spring.ListDemo.ListDemo">
+        <property name="hello" value="test"/>
+    </bean>
+
+    <bean id="timeHandler" class="com.cwww.spring.aop.TimeHandler"/>
+
+    <aop:config>
+        <!--<aop:pointcut id="timeLog" expression="execution(public * com.cwww.spring.aop.HelloInterface.*(..))"/>-->
+        <aop:aspect id="time" ref="timeHandler" order="1">
+            <!--<aop:pointcut id="argTest" expression="execution(public * com.cwww.spring.aop.HelloInterface.hello(String))"/>-->
+            <aop:around method="printTime" arg-names="msg" pointcut="execution(public * com.cwww.spring.aop.HelloInterface.hello(String)) and args(msg)"/>
+            <!--<aop:after method="printTime" pointcut-ref="timeLog"/>-->
+        </aop:aspect>
+    </aop:config>
+
 
     <!--<bean id="abstartJob" class="com.cwww.spring.AbstractJob" abstract="true">-->
         <!--<property name="demo" ref="demo"/>-->

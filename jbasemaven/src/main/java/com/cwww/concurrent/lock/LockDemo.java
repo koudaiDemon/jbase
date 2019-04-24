@@ -4,9 +4,11 @@ import org.apache.log4j.Logger;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.*;
 
 /**
  * @author cWww
@@ -17,6 +19,46 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockDemo {
 
     private static final Logger LOGGER = Logger.getLogger(LockDemo.class);
+
+    private ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private Lock readLock = readWriteLock.readLock();
+    private Lock writeLock = readWriteLock.writeLock();
+    private String msg;
+
+    public void lockReadingRegistry() {
+        this.readLock.lock();
+    }
+
+    public void unlockReadingRegistry() {
+        this.readLock.unlock();
+    }
+
+    public void lockWritingRegistry() {
+        this.writeLock.lock();
+    }
+
+    public void unlockWritingRegistry() {
+        this.writeLock.unlock();
+    }
+
+    public boolean isLockedForReading() {
+        return this.readWriteLock.getReadLockCount() > 0;
+    }
+
+    public boolean isLockedForWriting() {
+        return this.readWriteLock.isWriteLocked();
+    }
+
+    public void write(String msg){
+        this.msg = msg;
+        LOGGER.info(Thread.currentThread().getName()+" write: "+msg);
+    }
+
+    public String read(){
+        LOGGER.info(Thread.currentThread().getName()+" read: "+this.msg);
+        return this.msg;
+    }
+
 
 //    private final Lock lock = new ReentrantLock();
 //    private final Condition notFull  = lock.newCondition();
@@ -72,7 +114,34 @@ public class LockDemo {
 
     public static void main(String[] args) {
 
+//        final LockDemo lockDemo = new LockDemo();
+
+        final Map<String,String> map = new ConcurrentHashMap<>(3);
+        final String msg = "msg";
+
 //        LOGGER.info("hello,world");
+
+        boolean[] read = new boolean[]{true,false,true,true,false,false,true,false};
+
+
+
+        for (final boolean r : read) {
+            new Thread(()-> {
+                LOGGER.info(Thread.currentThread().getName()+"start"+r);
+                if (r) {
+                    final String s = map.get(msg);
+                    LOGGER.info(Thread.currentThread().getName()+"msg:"+s);
+                } else {
+                    int seconds = (int)(Math.random()*10 + 1);
+                    map.put(msg,Thread.currentThread().getName());
+                    try {
+                        TimeUnit.SECONDS.sleep(seconds);
+                    } catch (InterruptedException e) {
+                        LOGGER.error("InterruptedException",e);
+                    }
+                }
+            }).start();
+        }
 
 //        new Thread(()-> {
 //            try {

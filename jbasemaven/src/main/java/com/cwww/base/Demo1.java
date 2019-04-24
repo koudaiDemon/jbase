@@ -1,8 +1,12 @@
 package com.cwww.base;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,8 +53,36 @@ public class Demo1 {
 //        String next = list.iterator().next();
 //        System.out.println(next);
 
-        System.out.println(addressResolution("湖北省武汉市洪山区"));
-        System.out.println(addressResolution("北京北京市海淀区西土城路十号北京邮电大学"));
+//        System.out.println(addressResolution("湖北省武汉市洪山区"));
+//        System.out.println(addressResolution("北京北京市海淀区西土城路十号北京邮电大学"));
+//        Boolean flag = null;
+//        System.out.println((true
+//                && !flag));
+//        System.out.println(String.format("%.2f",10.0022));
+
+//        List<String> list = Arrays.asList("1002","1003");
+
+//        System.out.println(list.stream().anyMatch(e -> "1002".equals(e)));
+
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+//        System.out.println(sdf.format(null));
+//        BigDecimal bigDecimal = BigDecimal.valueOf(100);
+//        System.out.println(bigDecimal.multiply(BigDecimal.TEN));
+//        System.out.println(bigDecimal);
+//        String regex = "(?i)^https?://dms.yuyue.com.cn(:[\\d]+)?.*";
+//        System.out.println(regex);
+//        final Pattern compile = Pattern.compile(regex);
+//        final Matcher matcher = compile.matcher("https://dms.yuyue.com.cn/login");
+//        while () {
+//
+//        }
+//        System.out.println(matcher.groupCount());
+//        System.out.println(matcher.find());
+//        System.out.println(matcher.group(0));
+//        System.out.println(matcher.groupCount());
+
+        System.out.println(StringUtils.join(new ArrayList(),","));
     }
 
     /**

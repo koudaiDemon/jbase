@@ -236,10 +236,10 @@ public class Demo {
 
     public static void main(String[] args) throws Exception {
         /** 测试压缩方法1  */
-        FileOutputStream fos1 = new FileOutputStream(new File("D:/mytest01.zip"));
+        FileOutputStream fos1 = new FileOutputStream(new File("D:/test.zip"));
 //        Demo.toZip("D:\\前端\\student", fos1,true);
 
-        OSSClient ossClient = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "LTAI7bDhQukclEg3", "hEGskx06RCLC6sCmDiUN07w9kF889F");
+        OSSClient ossClient = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "", "");
 
         String bucketName = "for-test1";
 
@@ -258,7 +258,7 @@ public class Demo {
 
         Map<String,InputStream> inputStreamMap = new HashMap<>(5);
         inputStreamMap.put("111.jpg", objectContent1);
-        inputStreamMap.put("promotion.impex", objectContent2);
+        inputStreamMap.put("mytest01.zip", objectContent2);
         inputStreamMap.put("促销.doc", objectContent3);
 
         Demo.toZip(inputStreamMap,fos1);
@@ -269,6 +269,14 @@ public class Demo {
 //        fileList.add(new File("D:/Java/jdk1.7.0_45_64bit/bin/java.exe"));
 //        FileOutputStream fos2 = new FileOutputStream(new File("D:/mytest02.zip"));
 //        Demo.toZip(fileList, fos2);
+
+        String str = null;
+
+        try {
+            str.length();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

@@ -10,8 +10,8 @@
         <!--<ksession name="HelloWorldKS"/>-->
     <!--</kbase>-->
 
-    <kbase name="hello" packages="drools.hello,drools.rules">
-        <ksession name="hello"/>
+    <kbase name="hello" packages="drools.hello,drools.rules" default="true">
+        <ksession name="hello" default="true"/>
     </kbase>
     <!--<configuration>-->
         <!--<property key="drools.evaluator.supersetOf" value="org.mycompany.SupersetOfEvaluatorDefinition"/>-->

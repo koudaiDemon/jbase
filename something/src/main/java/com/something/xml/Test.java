@@ -26,7 +26,7 @@ import java.util.*;
 public class Test {
 
     public static void main(String[] args) throws Exception {
-
+        
 
         final List<SkuPojo> skusList = new ArrayList<>();
         SkuPojo sku = new SkuPojo();
