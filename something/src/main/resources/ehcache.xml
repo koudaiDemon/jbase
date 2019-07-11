@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns='http://www.ehcache.org/v3'
+         xsi:schemaLocation="http://www.ehcache.org/v3
+         http://www.ehcache.org/schema/ehcache-core.xsd">
+         <!--xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"-->
 
     <!-- 磁盘缓存位置 -->
     <diskStore path="java.io.tmpdir/ehcache"/>
@@ -25,4 +28,4 @@
            timeToLiveSeconds="20"
            overflowToDisk="false"
            memoryStoreEvictionPolicy="LRU"/>
-</ehcache>
+</config>
