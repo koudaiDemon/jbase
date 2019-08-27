@@ -10,12 +10,14 @@ import org.springframework.stereotype.Component;
  * @Description
  * @date: 2018/6/13  10:24
  */
-@Component(value = "job")
+//@Component(value = "job")
 public class JobDemo extends AbstractJob {
 
-    @Autowired
-    @Qualifier("demo")
+//    @Autowired
+//    @Qualifier("demo")
     private Demo demo;
+
+    private String name = "123";
 //    private String name = "hello";
 //    private String age = "18";
 
@@ -23,6 +25,10 @@ public class JobDemo extends AbstractJob {
         System.out.println(demo.getSay());
     }
 
+
+    public JobDemo(Demo demo){
+        super(demo);
+    }
 
 //    @Autowired
 //    @Qualifier(value = "demoworld")

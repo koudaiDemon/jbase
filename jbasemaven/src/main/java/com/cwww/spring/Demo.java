@@ -13,6 +13,10 @@ public class Demo {
     public Demo() {
     }
 
+    public void init(){
+        System.out.println("=======================");
+    }
+
     public Demo(String say) {
         this.say = say;
     }

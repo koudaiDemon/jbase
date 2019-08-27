@@ -13,9 +13,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <compiler.version>3.5.1</compiler.version>
-        <spring.version>4.3.14.RELEASE</spring.version>
+        <spring.version>4.3.16.RELEASE</spring.version>
         <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
-        <slf4j.version>1.7.21</slf4j.version>
+        <slf4j.version>1.7.24</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <fastjson.version>1.2.44</fastjson.version>
         <httpClient.version>3.1</httpClient.version>
@@ -30,11 +30,14 @@
         <excle.poi.version>3.9</excle.poi.version>
         <httpcomponents.version>4.5.2</httpcomponents.version>
         <commons.lang.version>2.6</commons.lang.version>
+        <lombok.version>1.16.20</lombok.version>
     </properties>
     <modules>
         <module>jbaseMaven</module>
         <module>something</module>
         <module>spring-boot-demo</module>
+        <module>groovy-demo</module>
+        <module>dubbo-demo</module>
     </modules>
     <!--用于放子模块所需要的依赖-->
     <dependencyManagement>
@@ -88,6 +91,19 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--测试包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
         </dependency>
         <!-- Spring IOC的基础实现，包含访问配置文件、创建和管理bean等 -->
         <dependency>
@@ -162,9 +178,20 @@
             <version>${commons.lang.version}</version>
         </dependency>
         <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -179,6 +206,12 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>7.14.0.Final</version>
+                <extensions>true</extensions>
             </plugin>
         </plugins>
     </build>

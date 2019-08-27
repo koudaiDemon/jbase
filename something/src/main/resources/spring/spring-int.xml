@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="com.something.spring.integration"/>
+    
+    <int:channel id="testChannel"/>
+    <int:service-activator input-channel="testChannel" ref="reserviceServiceImpl" method="sayHello"/>
+
+    <int:channel id="inputChannel"/>
+    <int:channel id="outputChannel">
+        <int:queue capacity="10"/>
+    </int:channel>
+
+    <int:service-activator input-channel="inputChannel"
+                       output-channel="outputChannel"
+                       ref="reserviceServiceImpl"
+                       method="sayHello"/>
+
+    <int:inbound-channel-adapter expression="T(java.lang.System).currentTimeMillis()" channel="logger">
+        <int:poller fixed-delay="20000" max-messages-per-poll="2" />
+    </int:inbound-channel-adapter>
+
+    <int:logging-channel-adapter id="logger" logger-name="com.something.spring.integration"/>
+
+    <task:executor id="executor" queue-capacity="20" pool-size="5-20"/>
+
+    <!--<int:gateway id="simpleGateway"-->
+                 <!--service-interface="com.something.spring.integration.service.TestConverter"-->
+                 <!--default-request-channel="simpleExpression" />-->
+
+    <!--<int:service-activator id="expressionConverter"-->
+                           <!--input-channel="simpleExpression"-->
+                           <!--expression="payload.length()"/>-->
+
+    <!-- Web Service -->
+
+    <!--<int:gateway id="wsGateway" service-interface="com.something.spring.integration.service.TestConverter"-->
+                 <!--default-request-channel="viaWebService" />-->
+
+    <!--<int:chain id="wsChain" input-channel="viaWebService">-->
+        <!--<int:transformer-->
+                <!--expression="'&lt;FahrenheitToCelsius xmlns=&quot;https://www.w3schools.com/xml/&quot;&gt;&lt;Fahrenheit&gt;XXX&lt;/Fahrenheit&gt;&lt;/FahrenheitToCelsius&gt;'.replace('XXX', payload.toString())" />-->
+        <!--<int-ws:header-enricher>-->
+            <!--<int-ws:soap-action value="https://www.w3schools.com/xml/FahrenheitToCelsius"/>-->
+        <!--</int-ws:header-enricher>-->
+        <!--<int-ws:outbound-gateway-->
+                <!--uri="https://www.w3schools.com/xml/tempconvert.asmx"/>-->
+        <!--<int-xml:xpath-transformer-->
+                <!--xpath-expression="/*[local-name()='FahrenheitToCelsiusResponse']/*[local-name()='FahrenheitToCelsiusResult']"/>-->
+    <!--</int:chain>-->
+</beans>

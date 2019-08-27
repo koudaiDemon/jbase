@@ -13,8 +13,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -39,7 +38,7 @@ public class Demo {
         // 邮件服务器smtp协议端口
         mail.setSmtpPort(25);
         // 邮箱账户
-        mail.setAuthentication("15527165793", "");
+        mail.setAuthentication("15527165793", "caiwei1213");
         // 邮件的字符集
         mail.setCharset("UTF-8");
         // 是否启用SSL
@@ -52,21 +51,20 @@ public class Demo {
         mail.setFrom("koudaidemon@163.com");
 //        抄送
 //        mail.addReplyTo("metepec.service@ngux.com.mx");
-        String[] toList = {"XXXXXXXXX@qq.com"};
+        String[] toList = {"xiang.zhao@hand-china.com"};
         for (String to : toList) {
             // 收件人地址，可以设置多个
             mail.addTo(to);
         }
         // 邮件主题
         mail.setSubject("test1111");
-        String html = "<h1 style='color:rgb(17,142,238)'>test0712</h1>";
+        String html = "<h1 style='color:rgb(236,25,27)'>test0712</h1>";
         // 邮件正文
 //        mail.setHtmlMsg(html);
         mail.setHtmlMsg(html);
 
         //添加附件
         mail.attach(dataSource,"poi.xls","报表附件");
-
 //        mail.attach()
         // 发送邮件
         mail.send();
@@ -185,7 +183,7 @@ public class Demo {
             }
         }
 
-        File xlsFile = new File("poi.xls");
+//        File xlsFile = new File("poi.xls");
 //        RandomAccessFile randomAccessFile = new RandomAccessFile(xlsFile,"rw");
 //        FileChannel fileChannel = randomAccessFile.getChannel();
 //        fileChannel.
@@ -193,15 +191,23 @@ public class Demo {
 
 //        byte[] bytes = workbook.getBytes();
 
-        FileInputStream fileInputStream = new FileInputStream(xlsFile);
-        DataSource dataSource = new ByteArrayDataSource(fileInputStream,"application/vnd.ms-excel");
+//        workbook.write();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        workbook.write(outputStream);
+        outputStream.flush();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+
+//        FileInputStream fileInputStream = new FileInputStream(xlsFile);
+        DataSource dataSource = new ByteArrayDataSource(inputStream,"application/vnd.ms-excel");
 //        System.out.println(dataSource.getName());
 //        FileOutputStream xlsStream = new FileOutputStream(xlsFile);
 //        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream();
 //        workbook.write(xlsStream);
 //        fileInputStream.flush();
-        fileInputStream.close();
-        Demo.apache(dataSource);
+//        fileInputStream.close();
+        for (int i = 0 ;i < 20;i++) {
+            Demo.apache(dataSource);
+        }
 
 
 //        String type = null;

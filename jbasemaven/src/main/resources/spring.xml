@@ -2,16 +2,48 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/cache
+           http://www.springframework.org/schema/cache/spring-cache.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="spring" />
+    <context:component-scan base-package="com.cwww.spring.ListDemo;com.cwww.spring.aop" />
+    <import resource="spring-demo.xml"/>
+    <bean id="demo" class="com.cwww.spring.Demo"/>
 
-    <bean id="abstartJob" class="spring.AbstractJob" abstract="true">
-        <property name="demo" ref="demo"/>
+    <bean id="action1" class="com.cwww.spring.ListDemo.ActionDemo1"/>
+    <bean id="action2" class="com.cwww.spring.ListDemo.ActionDemo2"/>
+
+    <bean id="listDemo" class="com.cwww.spring.ListDemo.ListDemo">
+        <property name="hello" value="test"/>
     </bean>
-    <bean id="demo" class="spring.Demo">
-        <property name="say" value="hello"></property>
-    </bean>
+
+    <bean id="timeHandler" class="com.cwww.spring.aop.TimeHandler"/>
+
+    <aop:config>
+        <!--<aop:pointcut id="timeLog" expression="execution(public * com.cwww.spring.aop.HelloInterface.*(..))"/>-->
+        <aop:aspect id="time" ref="timeHandler" order="1">
+            <!--<aop:pointcut id="argTest" expression="execution(public * com.cwww.spring.aop.HelloInterface.hello(String))"/>-->
+            <aop:around method="printTime" arg-names="msg" pointcut="execution(public * com.cwww.spring.aop.HelloInterface.hello(String)) and args(msg)"/>
+            <!--<aop:after method="printTime" pointcut-ref="timeLog"/>-->
+        </aop:aspect>
+    </aop:config>
+
+
+    <!--<bean id="abstartJob" class="com.cwww.spring.AbstractJob" abstract="true">-->
+        <!--<property name="demo" ref="demo"/>-->
+    <!--</bean>-->
+    <!--<bean id="demo" class="com.cwww.spring.Demo">-->
+        <!--<property name="say" value="hello"></property>-->
+    <!--</bean>-->
 
     <!--<bean id="demoworld" class="spring.Demo">-->
         <!--<property name="say" value="world"></property>-->
@@ -21,24 +53,38 @@
     <!--</bean>-->
     <!--<bean id="job" class="spring.JobDemo" autowire="byName"></bean>-->
 
-    <bean id="action1" class="spring.Action">
-        <property name="level" value="1"/>
-    </bean>
-    <bean id="action2" class="spring.Action">
-        <property name="level" value="2"/>
-    </bean>
-    <bean id="action3" class="spring.Action">
-        <property name="level" value="3"/>
-    </bean>
+    <!--<bean id="action1" class="com.cwww.spring.Action">-->
+        <!--<property name="level" value="1"/>-->
+    <!--</bean>-->
+    <!--<bean id="action2" class="com.cwww.spring.Action">-->
+        <!--<property name="level" value="2"/>-->
+    <!--</bean>-->
+    <!--<bean id="action3" class="com.cwww.spring.Action">-->
+        <!--<property name="level" value="3"/>-->
+    <!--</bean>-->
 
-    <bean id="testList" class="spring.TestList">
-        <property name="list">
-            <list>
-                <ref bean="action2"/>
-                <ref bean="action1"/>
-                <ref bean="action3"/>
-            </list>
-        </property>
-    </bean>
+    <!--<bean id="testList" class="com.cwww.spring.TestList">-->
+        <!--<property name="list" ref="list">-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<util:list id="list">-->
+        <!--&lt;!&ndash;<value type="java.lang.String">abc</value>&ndash;&gt;-->
+        <!--&lt;!&ndash;<value type="java.lang.String">def</value>&ndash;&gt;-->
+        <!--&lt;!&ndash;<value type="java.lang.String">a</value>&ndash;&gt;-->
+        <!--<ref bean="action1"/>-->
+        <!--<ref bean="action2"/>-->
+        <!--<ref bean="action3"/>-->
+        <!--<bean id="action4" class="com.cwww.spring.Action">-->
+            <!--<property name="level" value="4"/>-->
+        <!--</bean>-->
+    <!--</util:list>-->
+
+    <!--<util:list id="listDemo">-->
+        <!--<ref parent="listDemo"/>-->
+        <!--<value type="java.lang.String">eee</value>-->
+        <!--<value type="java.lang.String">fff</value>-->
+    <!--</util:list>-->
+
 
 </beans>

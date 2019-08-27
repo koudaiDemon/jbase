@@ -1,6 +1,10 @@
 package com.something.test;
 
-import java.util.Calendar;
+import com.alibaba.fastjson.JSON;
+import com.sun.javafx.UnmodifiableArrayList;
+import org.springframework.beans.BeanUtils;
+
+import java.util.*;
 
 /**
  * @author cWww
@@ -92,14 +96,33 @@ public class Test {
 //        date.setTime(dayTime);
 //        System.out.println(date);
 //        Date todayTime = new Date().withTimeAtStartOfDay().toDate();
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,0);
-        calendar.set(Calendar.MINUTE,0);
-        calendar.set(Calendar.SECOND,0);
-        calendar.set(Calendar.MILLISECOND,0);
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.HOUR_OF_DAY,0);
+//        calendar.set(Calendar.MINUTE,0);
+//        calendar.set(Calendar.SECOND,0);
+//        calendar.set(Calendar.MILLISECOND,0);
 //        calendar.add(Calendar.DAY_OF_MONTH,1);
 
-        System.out.println(calendar.getTime().getTime());
+//        System.out.println(calendar.getTime().getTime());
+
+//        Map<String,String> map = new HashMap<>(3);
+//        map.put("abc",null);
+//        map.put("def",null);
+//        System.out.println(map);
+//        String[] strs = {"a","b","c"};
+//        List<String> list = new UnmodifiableArrayList<>(strs,3);
+//
+//
+//        System.out.println(list);
+//        List<String> list1 = list.subList(1, 3);
+//        String[] strings = new String[list1.size()];
+//        String[] strings1 = list1.toArray(strings);
+//        System.out.println(strings1[0]+strings1[1]);
+        List<String> str = new ArrayList<>();
+        str.add("adasd");
+        str.add("bbbbbb");
+        System.out.println(JSON.toJSONString(str));
+
     }
 
     public static class TestLong{

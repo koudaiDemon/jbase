@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns='http://www.ehcache.org/v3'
+         xsi:schemaLocation="http://www.ehcache.org/v3
+         http://www.ehcache.org/schema/ehcache-core.xsd">
+         <!--xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"-->
+
+    <!-- 磁盘缓存位置 -->
+    <diskStore path="java.io.tmpdir/ehcache"/>
+
+    <!-- 默认缓存 -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxEntriesLocalDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+    <!-- helloworld缓存 -->
+    <cache name="HelloWorldCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="20"
+           timeToLiveSeconds="20"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU"/>
+</config>

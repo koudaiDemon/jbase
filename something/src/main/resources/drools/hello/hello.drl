@@ -1,0 +1,9 @@
+package drools.hello;
+dialect  "mvel"
+
+rule "hello"
+    when
+    then
+    System.out.println("hello");
+
+end

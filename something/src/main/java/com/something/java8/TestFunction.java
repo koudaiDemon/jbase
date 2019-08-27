@@ -10,6 +10,10 @@ import java.util.function.Function;
  */
 public class TestFunction {
 
+    public static void test(Function<String,String> function){
+//        System.out.println(function.apply());
+    }
+
     public static void main(String[] args) {
 
         Function<Integer,String> function = (e) -> { e = e + 5; return e + "2";};
