@@ -112,9 +112,8 @@ public class LockDemo {
 
     }
 
-    public static void main(String[] args) {
-
-//        final LockDemo lockDemo = new LockDemo();
+    public void test1(){
+        //        final LockDemo lockDemo = new LockDemo();
 
         final Map<String,String> map = new ConcurrentHashMap<>(3);
         final String msg = "msg";
@@ -142,6 +141,11 @@ public class LockDemo {
                 }
             }).start();
         }
+    }
+
+    public static void main(String[] args) {
+
+
 
 //        new Thread(()-> {
 //            try {
