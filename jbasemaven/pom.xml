@@ -15,6 +15,7 @@
         <jgroup.version>3.6.11.Final</jgroup.version>
         <easyexcel.latestVersion>1.0.2</easyexcel.latestVersion>
         <commons-collections4.version>4.1</commons-collections4.version>
+        <jsoniter.version>0.9.7</jsoniter.version>
     </properties>
 
     <dependencies>
@@ -67,6 +68,16 @@
             <version>${apache.email.version}</version>
         </dependency>
         <!--<dependency>-->
+            <!--<groupId>com.amazonaws</groupId>-->
+            <!--<artifactId>aws-java-sdk</artifactId>-->
+            <!--<version>1.11.602</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-ses</artifactId>
+            <version>1.11.602</version>
+        </dependency>
+        <!--<dependency>-->
             <!--<groupId>org.apache.poi</groupId>-->
             <!--<artifactId>poi</artifactId>-->
             <!--<version>${excle.poi.version}</version>-->
@@ -96,6 +107,37 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.23</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.sshd</groupId>
+            <artifactId>sshd-core</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.i2p.crypto</groupId>
+            <artifactId>eddsa</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jsoniter</groupId>
+            <artifactId>jsoniter</artifactId>
+            <version>${jsoniter.version}</version>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>mx.openpay</groupId>-->
             <!--<artifactId>openpay-api-client</artifactId>-->
