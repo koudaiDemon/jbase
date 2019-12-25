@@ -36,7 +36,6 @@ public class Demo {
         final MeterRegistry registry = new LoggingMeterRegistry(loggingRegistryConfig, Clock.SYSTEM);
 
         new JvmMemoryMetrics().bindTo(registry);
-//        GuavaCacheMetrics.monitor(registry, STRING_INTEGER_CACHE, "book.guava");
 
         while (true) {
 

@@ -49,6 +49,7 @@ public class Test {
         RequestReceiveData requestReceiveData = new RequestReceiveData();
         requestReceiveData.setCode("asdasd");
         requestReceiveData.setPackages(12.0);
+        requestReceiveData.setShips(Collections.singletonList(new RequestReceiveData.ReceiveShipData()));
         requestReceiveDatas.setRequestReceiveDataList(Collections.singletonList(requestReceiveData));
 
         final StringWriter writer = new StringWriter();
@@ -63,6 +64,7 @@ public class Test {
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         //防止文件中文乱码
         m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+        m.setProperty(JAXBContextProperties.MEDIA_TYPE, "application/json");
         m.marshal(requestReceiveDatas, writer);
         final String xml = writer.toString();
         System.out.println(xml);
@@ -94,7 +96,7 @@ public class Test {
         JAXBElement<RequestReceiveDatas> unmarshal = unmarshaller.unmarshal(source, RequestReceiveDatas.class);
 
 
-        System.out.println(unmarshal.getValue());
+        System.out.println(unmarshal.getValue().getRequestReceiveDataList());
         System.out.println(unmarshal);
 //        String json = "{\"name\":\"abc\"}";
 //

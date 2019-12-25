@@ -15,6 +15,8 @@ public class Demo {
         //将一个10进制数变为2进制
         Integer.toBinaryString(123);
 
+        Long.toBinaryString(8796093087748L);
+
         //二进制1000
         int i1 = 8;
         //二进制1011

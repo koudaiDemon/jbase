@@ -69,11 +69,6 @@
             <artifactId>something</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.jbase</groupId>
-            <artifactId>jbaseMaven</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
     <build>

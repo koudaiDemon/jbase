@@ -33,6 +33,8 @@ public class QuartzDemo {
             // define the job and tie it to our HelloJob class
             JobDetail job = newJob(HelloJob.class)
                     .withIdentity("job1", "group1")
+                    //触发器失效以后继续存储job
+                    .storeDurably()
                     .build();
 
             // Trigger the job to run now, and then repeat every 40 seconds

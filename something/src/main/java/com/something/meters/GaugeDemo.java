@@ -30,7 +30,9 @@ public class GaugeDemo {
                 .build();
         reporter.start(1, TimeUnit.SECONDS);
 
-        final Gauge<Integer> register = metrics.register(MetricRegistry.name(GaugeDemo.class, "queue", "size"), STRING_QUEUE::size);
+        final Gauge<Integer> register = metrics.register(
+                MetricRegistry.name(GaugeDemo.class, "queue", "size"),
+                STRING_QUEUE::size);
 
         while (true) {
             STRING_QUEUE.add("job - " + System.currentTimeMillis());

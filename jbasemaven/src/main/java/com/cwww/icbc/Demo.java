@@ -100,34 +100,34 @@ public class Demo {
 //        System.out.println("=========================");
 //        System.out.println(tranDataBase64);
 
-        form.add(new BasicNameValuePair("APIName",transforToBASE64(ReturnValue.sign("B2B".getBytes(),"B2B".getBytes().length,bs,password.toCharArray()))));
-        form.add(new BasicNameValuePair("APIVersion","001.001.001.001"));
-        form.add(new BasicNameValuePair("Shop_code","1104EE20386013"));
-        form.add(new BasicNameValuePair("MerchantURL","http://www.merchant.com/ICBCPay/"));
-        form.add(new BasicNameValuePair("ContractNo","test2018102201"));
-        form.add(new BasicNameValuePair("ContractAmt","1"));
-        form.add(new BasicNameValuePair("Account_cur","001"));
-        form.add(new BasicNameValuePair("JoinFlag","2"));
-        form.add(new BasicNameValuePair("Mer_Icbc20_signstr",signatures));
-
-        form.add(new BasicNameValuePair("Cert",certs));
-        form.add(new BasicNameValuePair("SendType","0"));
-        form.add(new BasicNameValuePair("TranTime","20181022180000"));
-        form.add(new BasicNameValuePair("Shop_acc_num","1104021009000097469"));
-        form.add(new BasicNameValuePair("PayeeAcct","1104021009000097469"));
-        HttpEntity httpEntity = new UrlEncodedFormEntity(form,"GBK");
-        postMethod.setEntity(httpEntity);
-        try {
-
-            HttpResponse execute = client.execute(postMethod);
-            System.out.println(execute.getStatusLine().getStatusCode());
-            String s = EntityUtils.toString(execute.getEntity(), "UTF-8");
-            System.out.println(s);
-            client.close();
-        } catch (ConnectException e){
-            System.out.println("出现异常");
-        }
-        System.out.println();
+//        form.add(new BasicNameValuePair("APIName",transforToBASE64(ReturnValue.sign("B2B".getBytes(),"B2B".getBytes().length,bs,password.toCharArray()))));
+//        form.add(new BasicNameValuePair("APIVersion","001.001.001.001"));
+//        form.add(new BasicNameValuePair("Shop_code","1104EE20386013"));
+//        form.add(new BasicNameValuePair("MerchantURL","http://www.merchant.com/ICBCPay/"));
+//        form.add(new BasicNameValuePair("ContractNo","test2018102201"));
+//        form.add(new BasicNameValuePair("ContractAmt","1"));
+//        form.add(new BasicNameValuePair("Account_cur","001"));
+//        form.add(new BasicNameValuePair("JoinFlag","2"));
+//        form.add(new BasicNameValuePair("Mer_Icbc20_signstr",signatures));
+//
+//        form.add(new BasicNameValuePair("Cert",certs));
+//        form.add(new BasicNameValuePair("SendType","0"));
+//        form.add(new BasicNameValuePair("TranTime","20181022180000"));
+//        form.add(new BasicNameValuePair("Shop_acc_num","1104021009000097469"));
+//        form.add(new BasicNameValuePair("PayeeAcct","1104021009000097469"));
+//        HttpEntity httpEntity = new UrlEncodedFormEntity(form,"GBK");
+//        postMethod.setEntity(httpEntity);
+//        try {
+//
+//            HttpResponse execute = client.execute(postMethod);
+//            System.out.println(execute.getStatusLine().getStatusCode());
+//            String s = EntityUtils.toString(execute.getEntity(), "UTF-8");
+//            System.out.println(s);
+//            client.close();
+//        } catch (ConnectException e){
+//            System.out.println("出现异常");
+//        }
+//        System.out.println();
     }
 
     public static byte[] getFromBASE64(InputStream inputStream) {

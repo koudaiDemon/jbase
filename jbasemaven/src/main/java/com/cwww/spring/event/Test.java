@@ -12,7 +12,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class Test {
 
     public static String test(){
-        ApplicationContext ac = new FileSystemXmlApplicationContext("src/main/resources/spring.xml");
+        ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:spring.xml");
 
         TestService testService = ac.getBean(TestService.class);
 
