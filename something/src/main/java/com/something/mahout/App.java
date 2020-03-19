@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * @author cWww
  * @Title 推荐引擎，用电影数据进行推荐
- * @Description App
+ * @Description App https://grouplens.org/datasets/movielens/
  * @date: 2019/10/11  14:55
  */
 @Slf4j
@@ -76,7 +76,6 @@ public class App {
         final long start = System.currentTimeMillis();
         log.info("start main method :[{}]", start);
 
-
         final DataModel model = new GenericDataModel(preferences);
         // 相似度
         final ItemSimilarity itemSimilarity = new PearsonCorrelationSimilarity(model);
@@ -90,13 +89,12 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-//        userBased();
 
+        log.info("users size:[{}]", dataSource.getAllUsers().size());
+        log.info("movies size:[{}]", dataSource.getAllMovies().size());
+        log.info("rates size:[{}]", dataSource.getAllRate().size());
+        userBased();
 //        itemBased();
-//        log.info("recommend size:[{}]", recommend.size());
-//        log.info("users size:[{}]", dataSource.getAllUsers().size());
-//        log.info("movies size:[{}]", dataSource.getAllMovies().size());
-//        log.info("rates size:[{}]", dataSource.getAllRate().size());
     }
 
 

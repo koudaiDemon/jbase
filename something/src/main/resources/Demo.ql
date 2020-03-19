@@ -1,1 +1,9 @@
-int 平均分 = (语文+数学+英语+综合考试.科目2)/5.0;return 平均分
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+date = new Date();
+sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+System.out.println(sdf.format(date));
+
+return sdf.format(date);

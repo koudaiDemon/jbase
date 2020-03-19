@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class FileDataSource implements DataSource {
 
     private static final Integer SIZE = 500;
-    private static final String PATH = "D:\\app\\ml-1m\\ml-1m";
+    private static final String PATH = "/Users/cWww/Documents/app/ml-1m";
     private static final String USER_FILE = "users.dat";
     private static final String MOVIE_FILE = "movies.dat";
     private static final String RATE_FILE = "ratings.dat";
