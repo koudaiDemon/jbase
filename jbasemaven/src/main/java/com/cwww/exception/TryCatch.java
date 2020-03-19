@@ -24,23 +24,23 @@ public class TryCatch {
         }
     }
 
+    public static String demo1() {
+        try {
+            return demo();
+        } finally {
+            System.out.println("hello");
+        }
+    }
+
+    public static String demo(){
+        final String demo = "demo";
+        System.out.println(demo);
+        return demo;
+    }
+
     public static void main(String[] args) {
 
-
-        try {
-
-            int i = 0;
-
-            if (i > 1) {
-                System.out.println("数据:"+i);
-            } else {
-                throw new RuntimeException("测试异常");
-            }
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
+        System.out.println("====="+demo1());
     }
 
 }

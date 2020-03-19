@@ -22,6 +22,8 @@ public class StringDemoTest {
         stringJoiner.setEmptyValue("");
 
         log.info("str:[{}]", stringJoiner.toString());
+
+
     }
 
 }
