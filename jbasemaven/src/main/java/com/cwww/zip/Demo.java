@@ -239,7 +239,7 @@ public class Demo {
         FileOutputStream fos1 = new FileOutputStream(new File("D:/mytest01.zip"));
 //        Demo.toZip("D:\\前端\\student", fos1,true);
 
-        OSSClient ossClient = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "LTAI7bDhQukclEg3", "hEGskx06RCLC6sCmDiUN07w9kF889F");
+        OSSClient ossClient = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "", "");
 
         String bucketName = "for-test1";
 
