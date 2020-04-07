@@ -46,7 +46,6 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>4.0.1</version>
-            <type>bundle</type>
         </dependency>
 
         <!--父模块已经存在对应的log,这里解除对于其他log的依赖-->

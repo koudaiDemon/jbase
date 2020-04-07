@@ -26,7 +26,7 @@ public class Demo {
 
     private static final Cache<String, Integer> STRING_INTEGER_CACHE = CacheBuilder.newBuilder()
             .maximumSize(CACHE_SIZE)
-            .recordStats() // required
+//            .recordStats() // required
             .build();
 
     public static void main(String[] args) {
