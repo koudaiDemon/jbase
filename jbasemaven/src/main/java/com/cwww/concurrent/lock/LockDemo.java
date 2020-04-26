@@ -1,12 +1,10 @@
 package com.cwww.concurrent.lock;
 
-import org.apache.log4j.Logger;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.*;
 
@@ -18,7 +16,7 @@ import java.util.concurrent.locks.*;
  */
 public class LockDemo {
 
-    private static final Logger LOGGER = Logger.getLogger(LockDemo.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LockDemo.class);
 
     private ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
     private Lock readLock = readWriteLock.readLock();

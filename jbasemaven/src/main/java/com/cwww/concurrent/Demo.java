@@ -1,9 +1,8 @@
 package com.cwww.concurrent;
 
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerRepository;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.spi.LoggerContext;
@@ -18,7 +17,7 @@ import java.util.*;
  */
 public class Demo {
 
-    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.LogManager.getLogger(Demo.class);
+    private static final Logger LOGGER = LogManager.getLogger(Demo.class);
 
 
 
