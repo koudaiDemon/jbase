@@ -15,7 +15,7 @@
         <google.zxing.version>3.3.0</google.zxing.version>
         <ehcache.version>2.10.2</ehcache.version>
         <drools-version>7.0.0.Final</drools-version>
-        <quartz.version>2.2.1</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
         <alibaba.sentinel>1.5.1</alibaba.sentinel>
         <cjlib.version>2.2.2</cjlib.version>
         <dom4j.version>1.6.1</dom4j.version>
