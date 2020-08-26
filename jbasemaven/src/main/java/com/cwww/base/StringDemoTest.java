@@ -26,4 +26,22 @@ public class StringDemoTest {
 
     }
 
+    public static void main(String[] args) {
+
+        String temp = "aaaa:%d:%d";
+//        String temp1 = "aaaa";
+
+        long current = System.currentTimeMillis();
+
+        for (int i = 0 ; i < 1000000; i++) {
+            String str = String.format(temp, i, i);
+//            String str = temp1 + i + i;
+        }
+
+
+        log.info("cost:[{}]", System.currentTimeMillis() - current);
+
+
+    }
+
 }
