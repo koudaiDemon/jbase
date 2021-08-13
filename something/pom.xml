@@ -24,10 +24,58 @@
         <metrics.version>4.1.0</metrics.version>
         <mahout.version>0.13.0</mahout.version>
         <qlexpress.version>3.2.4</qlexpress.version>
-        <lucene.version>8.6.1</lucene.version>
+        <lucene.version>8.8.1</lucene.version>
+        <jmh.version>1.26</jmh.version>
+        <jol.version>0.14</jol.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-core</artifactId>
+            <version>1.4.25.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>1.4.25.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-websockets-jsr</artifactId>
+            <version>1.4.25.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>10.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>3.0.3</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -148,7 +196,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version> 3.2.4.RELEASE  </version>
+            <version>3.2.4.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -169,19 +217,19 @@
 
         <!--Drools-->
         <!--<dependency>-->
-            <!--<groupId>org.drools</groupId>-->
-            <!--<artifactId>drools-compiler</artifactId>-->
-            <!--<version>6.0.0.CR1</version>-->
+        <!--<groupId>org.drools</groupId>-->
+        <!--<artifactId>drools-compiler</artifactId>-->
+        <!--<version>6.0.0.CR1</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.kie</groupId>-->
-            <!--<artifactId>kie-api</artifactId>-->
-            <!--<version>6.0.0.CR1</version>-->
+        <!--<groupId>org.kie</groupId>-->
+        <!--<artifactId>kie-api</artifactId>-->
+        <!--<version>6.0.0.CR1</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.drools</groupId>-->
-            <!--<artifactId>drools-compiler</artifactId>-->
-            <!--<version>6.0.0.CR1</version>-->
+        <!--<groupId>org.drools</groupId>-->
+        <!--<artifactId>drools-compiler</artifactId>-->
+        <!--<version>6.0.0.CR1</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -206,9 +254,9 @@
             <version>${quartz.version}</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>com.drools</groupId>-->
-            <!--<artifactId>drools-demo</artifactId>-->
-            <!--<version>1.0-SNAPSHOT</version>-->
+        <!--<groupId>com.drools</groupId>-->
+        <!--<artifactId>drools-demo</artifactId>-->
+        <!--<version>1.0-SNAPSHOT</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
@@ -262,6 +310,21 @@
             <artifactId>lucene-core</artifactId>
             <version>${lucene.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-demo</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
 
 
         <!--推荐算法-->
@@ -277,9 +340,9 @@
             </exclusions>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.apache.mahout</groupId>-->
-            <!--<artifactId>mahout-hdfs</artifactId>-->
-            <!--<version>${mahout.version}</version>-->
+        <!--<groupId>org.apache.mahout</groupId>-->
+        <!--<artifactId>mahout-hdfs</artifactId>-->
+        <!--<version>${mahout.version}</version>-->
         <!--</dependency>-->
 
         <dependency>
