@@ -42,7 +42,7 @@ import java.util.zip.ZipOutputStream;
  * @date: 2018/7/26  10:35
  */
 //@RestDemoController
-//@Controller
+@Controller
 @RequestMapping("/")
 @EnableAsync
 public class HelloController {
@@ -93,7 +93,7 @@ public class HelloController {
         return user;
     }
 
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    @GetMapping(value = "/user")
     @ResponseBody
     public Map<String,Object> user(){
         final Map<String,Object> map = new HashMap<>(3);

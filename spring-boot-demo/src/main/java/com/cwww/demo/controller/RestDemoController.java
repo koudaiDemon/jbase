@@ -2,6 +2,7 @@ package com.cwww.demo.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +30,11 @@ public class RestDemoController {
     public String demo2(String code){
         System.out.println(code);
         return "test";
+    }
+
+    @RequestMapping(value = "/demo3",method = RequestMethod.GET)
+    public String demo3(@RequestParam String name, @RequestParam List<String> address) {
+        return "demo3";
     }
 
 

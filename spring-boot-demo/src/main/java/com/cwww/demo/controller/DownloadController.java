@@ -7,10 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -50,5 +48,14 @@ public class DownloadController {
         LOGGER.info("user:{}",user);
         return user;
     }
+
+    @RequestMapping(value = "/upload",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public String upload(@RequestParam String name, @RequestParam(value = "file", required = false) MultipartFile multipartFile) {
+        LOGGER.info("name:[{}]", name);
+        LOGGER.info("multipartFile:[{}]", multipartFile);
+        return name;
+    }
+
 
 }
