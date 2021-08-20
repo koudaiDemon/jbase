@@ -12,7 +12,15 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        JSON.parseObject("");
+//        JSON.parseObject("");
+
+        String str = "demo@example.com";
+        System.out.println((char)64);
+        System.out.println((char)46);
+        String lastPart = str.substring(str.indexOf(64));
+        int lastDotIndex = lastPart.lastIndexOf(46);
+
+        System.out.println(lastDotIndex);
 
     }
 

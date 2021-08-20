@@ -8,6 +8,7 @@ import com.icbc.api.request.EnterpriseOpenpayDirectPayRequestV1;
 import com.icbc.api.response.EbankcSignInfoQueryResponseV1;
 import com.icbc.api.response.EnterpriseOpenpayDirectPayResponseV1;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.FileInputStream;
 import java.security.PrivateKey;
@@ -25,68 +26,48 @@ import java.util.UUID;
  */
 public class Demo3 {
 
-    protected static final String MY_PRIVATE_KEY = "BKiCCIc3wYRTIozUR76oYguDToWX+jc4Aak7i5LWkw+lq9rl41fKmZrdWLsSO9n5VnaSgjVAqo7a\n" +
-            "8qRJGaf3552RV22ZzRyCt2GQzi4yVX1zqoAlQCAhTMiPK4ytS8MBP5dMnXAORnnUTZqESeOvAfW3\n" +
-            "kMDt03rSE+q1ikVDTXYRlO+rBBqb6ipNuKkrbxQUYcDRF9pp6wHnP/KNqdWgmkCc3ltHxwYw1q2o\n" +
-            "LJ5qGGrjXU+VttIQY+0/FmS7yTgjL8UvgGStOJdqURm3ZHo7AcNtKDM4iLySTSkmn5imrh0z2sOF\n" +
-            "kMWifaTjcje9WAytUsQMNpRqOmUoqW0glIr9jXiQoxyXfd+uKbUVt9+PXla7GK7KDtv4cPI6TMx4\n" +
-            "peZwPnUGVT3y43f0ahoBnY5a72k1ewuNGcx7Ll8sftbKJRsNa+0axXBuHXhKuKkcD+Hj2YTfakMM\n" +
-            "nqjAQuGaZ320jVQYUfkN05Q6QpfiO1eWyVbMdhqisLD+V0PMEvNY7gSwGaqqZy6Y/oW9MqELUWsE\n" +
-            "Lu7JDXaa7KgRrAZdxE9/2R8rmHQGhQwbqcWrYWQDsKbTetSWU5vJPZAqfswHCeku15KRPEoQL5w1\n" +
-            "XC+WI1EyN4viD8soF4mFlVwALK56YZ43IwpTka50hrTrR1w+/bybzLCqPrv/ZXam1ylookQbq9Iu\n" +
-            "IIsBHEa3E7z04ehCBfM530WRQZHKOIO8ugUuaZbMlMbTlDTKJIocC6c9DWCMwwAWGWj0UwAs9+VC\n" +
-            "/NjBoornxT3/O5IQh3txBT/T+wo6VvTtuoXSp3I7Vd+HK2EObKFTHUTOrxQczLuAX2ieNQA8CuYJ\n" +
-            "17vAX18R8VH5k7XxgebuT7ek4t+0m4MXJR4EuJOW1Yvpv6d+wbf01UDOuUn5/yw3KTvFTp/9/8jl\n" +
-            "nqld7lAePYd9uQzuuWFlgmEa0qYKhlmnCiSylZV0JsnIRIYIYfiYoZBPx3mBRRlSnzW6mCBzD09Q\n" +
-            "CN5hB6z5RwcfE6Q76CTGsiHhCYN0xFAb26bp4L1JgGHI48E4eCHLYBa8s/vyxhKdv3KqIlvyleMo\n" +
-            "wQRKAVzbQRTiqtPzEXJwLt3ku2B09VbUPntohU5fWAEGkcFTVQ4RpMXvxHMM5VJdoJ6PE8E6tnVX\n" +
-            "ezjyE6ZHEFsCuVfT3YsAbip51aU2nQjMV76VLkwhJdI/C9wO7uoWPDl80ihum8JwsuHHdZnv/Oak\n" +
-            "25GWllJktDeC5oJBioLzpm+hh7BMJsApTiVESU9O30c2A9qVBG1P4ydoTliRxQWjj67ax9HCwK+/\n" +
-            "ZbQsj4ypXrjz1gOc6uuKdnbr+kNxmfy9kxG/IaIn0cRuDgWxGi7sBddpYW0ZjvZDAIQF5IZzznnd\n" +
-            "XTN8ptT+3AS8OzbES9Hll/cO6WnH9agzkyCXR3P49+fT77AKpSuptxwBxoPHC7ODjoLJG8nhOEO7\n" +
-            "rHld7XSoAFkFSCMS2JxWD8McyevfqA5jm2NnAXsgmmHo2yWiYPfSzGabPQmmgYhjNUWDDxHz7WcL\n" +
-            "kG8Sfa74cfatJRftiXho/ftxmRYnGeXxOsWt1UxQJ8KQxrMWhJfE7qf7MrvtONWTgo6yFpwo";
-
+    protected static final String MY_PRIVATE_KEY = "BKgCeUXRxYOrrGsu/J2KODF1GY0wwHBW4v47wjGr5+2QP1boAG7gKeovqnoMpQ+daWq+KJX4NS4f\n" +
+            "1DUcAfuT/WxUbEIkOPifn5/PU3MknUJNZYppRl21D+ssXXARHF+klChWY8E8cigZEd/p+8yfHiC4\n" +
+            "xaAah8znpxFjDPQvL017KQFLiw96szaA8RTx4rDJd0XLew6yefR8eYfTfXSnh9klFm9F4Hi7yj6K\n" +
+            "KYB4+ooUtpkzWm14bSWYEP84gKJLoeeBMFCj+bn5X5EXQKIY/P4PKOMH8pfe7T5zj/iMzCacdrqb\n" +
+            "RyjJ+i1dYMz+Cwn4UTz+IiVcE4JTP3W+84l91Cva1w+HzoF6wT8wFVInC4z6wgtB7XFiaVper+UW\n" +
+            "IkRQlKRhHprwTZBy5kCqTBXnkam5S0ALLTTNu+YYpK9jpnBzb3RWwmV63v8RZjUfuuTO8JrpYnzN\n" +
+            "/sJW3p/4HNc3xWJf+DO23W/dGp7LDa+EM2qq/R3orKWMUGBXxEOM8C6WEVZ2XIA42rIKSPq/anlh\n" +
+            "P73RHdRRx+P1bytQCUalo5AHjlfs5JyRou52Z6PafttKl2cySe57BUZgNxMdnAnPKzQ4acGO1eQi\n" +
+            "AHopMm9VT3ZGLfa2mP77EDg57A+7mpI93kCuL7Kh6Gnorb7apNYVIkvHSlFSrtFUxon7PMCp22jJ\n" +
+            "xWboYVhMKTpTenGmyTiIF/3EGjVJWRNCtUtm6gb0tQcEZypXfi1IIzUdR525mlp//KYTNZc9zAdu\n" +
+            "EIbwcu9AztZhpnGKlsaqazq9MCup4IZ5+VhVQdDKTddCVV0uiko90OBnYKYiXbLg5ERg0z1W5EPC\n" +
+            "WUADCUoV6t367+ic5yWQURolyqL06B9OQ95YRtDbuweXsONVobA7J4JNPNel/HmuHgyJdnIUadHJ\n" +
+            "CsoQLVsYyVhG/a/IXG1+G052gihlnP+ybwg68ul1C4g1exIkQ3nR6hVnPv1FztK4y5oVc08OPdYe\n" +
+            "kYw+cjLoqoEouwbdjvDq74ldV7hz/vI/SzL7FzGHfZSMSR1f//lhQFanPVDC3k0CCVuTVJe+BiAc\n" +
+            "bkoL24mG1Q+HgMkAYUOFxHQGkItGrDV4plxNJe6bxSYjg4/osTbiWC2CuuaovAemG/5J8SsbhUDV\n" +
+            "DDq7X06bC5+g3l79zeRfJ/NVOfov3UpoHZKn5MhRlHJ53NyXu6Brn8nsvckAstUfzg3W+580sdoW\n" +
+            "meGXfLhECl9e3mbOnZZheuGKyP2RrqPkTOOagWlCu5mEA+xBc+JH4E90lX496h62JRHZAvVcw3Yg\n" +
+            "1icxuCbA5KrHwQDMFeiFgdVQNUzI5cZLLoO730R0326Y1ReHMZrGAENyXNBWjuYJ/CDsGJShA+iY\n" +
+            "FTDwutNLTJCmTp50ZA6fiAaPdAOjH/ui237l67/lJnhNPu04YznnO+ABo4avPyAhmFEV052ndU3d\n" +
+            "77ws9z/9X+gjL9Mv/sZcAxz9iJuwmqT0eLFZdidwnNjMVpQRbSmW3U/lSazgjnpTmH+ummHxdps9\n" +
+            "m1NpDa1mUFK+038Y+qpf+IEZwZ1Q82dZTUUJr13HgLQn0EJhgTHX6TOtuXbPeNDKTZlE9128";
     protected static final String APIGW_PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCwFgHD4kzEVPdOj03ctKM7KV+16bWZ5BMNgvEeuEQwfQYkRVwI9HFOGkwNTMn5hiJXHnlXYCX+zp5r6R52MY0O7BsTCLT7aHaxsANsvI9ABGx3OaTVlPB59M6GPbJh0uXvio0m1r/lTW3Z60RU6Q3oid/rNhP3CiNgg0W6O3AGqwIDAQAB";
 
-    protected static final String APP_ID = "1104EH0012001";
+    protected static final String APP_ID = "1104EH0064001";
 
     protected static final String PASSWORD = "95588";
 
-    protected static final String MY_PUB_KEY = "MIIDmDCCAoCgAwIBAgIKG5LKECVWAAK/OTANBgkqhkiG9w0BAQsFADA7MR8wHQYDVQQDExZJQ0JD\n" +
-            "IFRlc3QgQ29ycG9yYXRlIENBMRgwFgYDVQQKEw90ZXN0aWNiYy5jb20uY24wHhcNMTgxMTI2MDQz\n" +
-            "NjU4WhcNMTkxMTI2MDQzNjU4WjBIMR0wGwYDVQQDDBQxMTA0RUgwMDEyMDAxLmUuMTEwNDENMAsG\n" +
-            "A1UECwwEMTEwNDEYMBYGA1UECgwPdGVzdGljYmMuY29tLmNuMIIBIjANBgkqhkiG9w0BAQEFAAOC\n" +
-            "AQ8AMIIBCgKCAQEAoQb+ty4E+RBr1sy5r8jv3/1uHzRsOlBLUtj277u5p2AvOM+WASeUtmUsJOYs\n" +
-            "IIqG1+zoFjMr6MfuYq98fPz5Zlb7t1xZeXHpJjKUE9qeuyeuzrFU+j0zwtTZhlacZCW75V0UjhZY\n" +
-            "rabC3e1j0lb59qWCn5NeSbLS1fqWq9PhIOOXh/FSV0E4idxGosxKcbh1iZuvK1hRRzuT2jZqV2jc\n" +
-            "Vyye5vZ8Ij/5VDuOG0qitlTFzu7gPNAaHbuwi/+Rnm9dVdL6ZDrfyVjHUtoDrdNDECDQZuOVF9uV\n" +
-            "Dqh32+lGcOYg/XAWSDLwbhoPto9arZO3dxRnEi8J0tQLt1DIk11l8QIDAQABo4GQMIGNMB8GA1Ud\n" +
-            "IwQYMBaAFER9t5AsN6TZ7WzipIdXZwq18E0UMEsGA1UdHwREMEIwQKA+oDykOjA4MQ4wDAYDVQQD\n" +
-            "DAVjcmwzNzEMMAoGA1UECwwDY3JsMRgwFgYDVQQKDA90ZXN0aWNiYy5jb20uY24wHQYDVR0OBBYE\n" +
-            "FFn30zYBJFkNmFzVuy8lCtKdeVk7MA0GCSqGSIb3DQEBCwUAA4IBAQAVXTh5E/78huol1+kThMOr\n" +
-            "wW4sOiSNhho7SZtQHOkzTftz2zATdS4LMcUxKy0xvWl9ODzifo5SE/jgHAZN0+xZKCivdsmhAOAu\n" +
-            "YhGgZnglZneuPNN6mwOrMgEYXWZmv24Uy7eju1FQIOiGoYUN/ch2/d6qbB1hxySlE2puG4GjfPpQ\n" +
-            "/ZcRlfX4Bx9yyjwi0zKbcebPHVNowvzeL6h4d+/3EeKbbW0tNIniCA02eYUbKo7ir3Bq8lio+KBv\n" +
-            "MFZHoWv6uEaWiOwEBsresuVpz3Eq3R8iuakVX49QGmE/z85L8JgByw0qh7xyZVZ7Aef9d8zcO89/\n" +
-            "P5qehKbE09K1HBO9";
+    protected static final String MY_PUB_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjVD5SoHMZ0upYCUAID6/lcZqQYeStvhXRdoE83q0jkTbNrQ+TdaTeCpoRLurn1QJwGrK3C/vjPaMUrb9onlsY41BQMu19yOFPdeTbg2BnkF8feA5KBqT1/QNm1lMKIWqSCRWagOqFMAz41XuZgD2BHjIQjS+IG3SXz/iYue8HKfiVbUOsgkK7eGF4j2hesgGW48TEZdQOvZ8pmlNftA3/u4EH+kSJNPqIfwxgLQ9RXxJND3yD93o9M9K9WXM/yMsypxhfusol7R6OkdUMsv1nO+PevwWZtjrRKQ3RI55tp02M/4rgXDZSp3FYPJvqIADYbsRxCymEvAbSP3saAvAvwIDAQAB";
 
     private static final String PUBLIC_STR = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoQb+ty4E+RBr1sy5r8jv3/1uHzRsOlBLUtj277u5p2AvOM+WASeUtmUsJOYsIIqG1+zoFjMr6MfuYq98fPz5Zlb7t1xZeXHpJjKUE9qeuyeuzrFU+j0zwtTZhlacZCW75V0UjhZYrabC3e1j0lb59qWCn5NeSbLS1fqWq9PhIOOXh/FSV0E4idxGosxKcbh1iZuvK1hRRzuT2jZqV2jcVyye5vZ8Ij/5VDuOG0qitlTFzu7gPNAaHbuwi/+Rnm9dVdL6ZDrfyVjHUtoDrdNDECDQZuOVF9uVDqh32+lGcOYg/XAWSDLwbhoPto9arZO3dxRnEi8J0tQLt1DIk11l8QIDAQAB";
 
     public static void main(String[] args) throws Exception {
 
 
-//        FileInputStream f = new FileInputStream("D:\\yuwell\\工商银行接口\\鱼跃易企付测试证书\\1104EH0012001.key");
-//        byte[] bs = new byte[f.available()];
-//        f.read(bs);
-//        f.close();
+
 //
 //        bs = ReturnValue.base64enc(bs);
-
-
-//        String pfxPath = "D:\\yuwell\\工商银行接口\\鱼跃易企付测试证书\\1104EH0012001.pfx";
+//
+//
+//        String pfxPath = "D:\\yuwell\\工商银行接口\\鱼跃易企付测试证书\\1104EH0064001.pfx";
 //        String password = "95588";
-//        //私钥：pfx文件中获取私钥对象
+////        //私钥：pfx文件中获取私钥对象
 //        PrivateKey privateKey = PFXUtil.getPrivateKeyByPfx(pfxPath, password);
 //        byte[] privateKeyByte = privateKey.getEncoded();
 //        String privateKeyStr = new String(Base64.encodeBase64(privateKeyByte));
@@ -122,6 +103,16 @@ public class Demo3 {
 
 //        DefaultIcbcClient client = new DefaultIcbcClient(appId, myPrivateKey, caPublicKey);
 
+
+
+
+//        System.out.println(MY_PRIVATE_KEY.replace("\n",""));
+//        System.out.println("=======================");
+//        System.out.println(APIGW_PUBLIC_KEY.replace("\n",""));
+//        System.out.println("=======================");
+//        System.out.println(MY_PUB_KEY.replace("\n",""));
+
+
         DefaultIcbcClient client = new DefaultIcbcClient(APP_ID, MY_PRIVATE_KEY, APIGW_PUBLIC_KEY, MY_PUB_KEY, PASSWORD);
 ////
 ////
@@ -135,12 +126,12 @@ public class Demo3 {
 //
         // 设置请求路径
         request.setServiceUrl("https://apipcs3.dccnet.com.cn/api/enterprise/openpay/directpay/V1");
-
+        
 ////
         EnterpriseOpenpayDirectPayRequestV1.EnterpriseOpenpayDirectPayV1Biz bizContent = new EnterpriseOpenpayDirectPayRequestV1.EnterpriseOpenpayDirectPayV1Biz();
 ////
         //平台数据证书
-        bizContent.setFile_id("1104EH0012001.e.1104");
+        bizContent.setFile_id("1104EH0064001.e.1104");
         //0-同步，1-异步
         bizContent.setPay_mode("0");
         //0-免签 1-非免签
@@ -150,21 +141,21 @@ public class Demo3 {
         //在银行端注册一级平台时生成的号码
         bizContent.setFile_code("1104EH0012001");
         //在银行端注册一级平台时生成的名称
-        bizContent.setFile_name("鱼跃医疗");
+        bizContent.setFile_name("劣剥咪属堂洽矩淌气入词仲沈僧");
         //平台生成的唯一序列号
-        bizContent.setFile_serialno("11049000003933");
-        //交易平台公司全称
-        bizContent.setTradeplat_name("鱼跃医疗器械股份有限公司");
+        bizContent.setFile_serialno("123456789");
+        //交易平台公司全称(false)
+        bizContent.setTradeplat_name("江苏鱼跃医疗设备股份有限公司");
         //交易平台在银行端注册时生成的号码（false）
-        bizContent.setTradeplat_code("20181206000000003");
+        bizContent.setTradeplat_code("11049000003933");
         //trade_orgcode交易平台统一社会信用代码(false)
         bizContent.setTrade_orgcode("91350922MA34A6CP84");
-        //acct_orgcode终端客户统一社会信用代码
+        //acct_orgcode终端客户统一社会信用代码(false)
         bizContent.setAcct_orgcode("12345");
         //平台发起支付时传递的单号
         bizContent.setOrder_no("order123456789");
         //trade_time 交易平台发起的时间，时间需在系统前1小时至12小时之间，否则为错误订单，不允许提交；格式：YYYYMMDDHHMMSS
-        bizContent.setTrade_time("20181221170000");
+        bizContent.setTrade_time("20181223093000");
         //orderAmt 300，单位：分
         bizContent.setOrderAmt("3000");
         //amout 100，单位：分
@@ -172,9 +163,9 @@ public class Demo3 {
         //currtype 001，人民币，目前支持人民币
         bizContent.setCurrtype("001");
         //pay_name 企业在银行开办的对公账户户名
-        bizContent.setPay_name("鱼跃对公账户");
+        bizContent.setPay_name("江苏鱼跃医疗设备股份有限公司");
         //pay_acct_num 企业在银行开办的对公账户，支持综合账户19-9
-        bizContent.setPay_acct_num("1104021009000097469");
+        bizContent.setPay_acct_num("1104010309000295713");
         //pay_phoneno 付方联系方式	010-8270XXXX(False)
         bizContent.setPay_phoneno("010-82706722");
         //get_province 收货方省份	北京市(False)
@@ -183,7 +174,7 @@ public class Demo3 {
         bizContent.setGet_county("海淀区");
         //get_city 收货人城市	北京(False)
         bizContent.setGet_city("北京");
-        //get_email 收货人邮箱	xxx@139.com
+        //get_email 收货人邮箱	xxx@139.com(false)
         bizContent.setGet_email("www@139.com");
         //get_phone 收货人电话	132xxxxxxxx(False)
         bizContent.setGet_phone("13426351013");
@@ -202,21 +193,13 @@ public class Demo3 {
         //Rec_acct_num收款账号	企业在银行开办的对公账户，支持综合账户19-9；支持他行介质
         bizContent.setRec_acct_num("3602009009000401956");
         //rec_bnkclscode 收款行联行号	收款行联行号，人行规定的联行行号；他行收款时必输，否则会影响付款（False）
-        bizContent.setRec_bnkclscode("");
+//        bizContent.setRec_bnkclscode("");
         //rec_orgcode 收款统一社会信用代码	收款统一社会信用代码（False）
         bizContent.setRec_orgcode("sktyshxydm");
         //system_flag 标志收款人是否属于工行用户 1、系统内 2、系统外
         bizContent.setSystem_flag("1");
         //language 语言标志	字典：ZH_CN；EN_US
         bizContent.setLanguage("ZH_CN");
-
-
-
-
-
-
-
-
 
 
 
@@ -257,8 +240,8 @@ public class Demo3 {
 
         EnterpriseOpenpayDirectPayResponseV1 response = null;
 
-        Random rand = new Random();
-        String msgId = rand.nextInt(99999) + "msg";
+//        Random rand = new Random();
+        String msgId = UUID.randomUUID().toString();
 
         try {
             response = client.<EnterpriseOpenpayDirectPayResponseV1>execute(request, msgId);
@@ -293,6 +276,7 @@ public class Demo3 {
 //            // 失败
 //            System.out.println(response.getReturnMsg());
 //        }
+
 
     }
 

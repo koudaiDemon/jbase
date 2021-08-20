@@ -19,6 +19,15 @@ public class User implements Serializable {
     private List<Address> addresses;
     private Integer age;
     private Double weight;
+    private Phone phone;
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
 
     public User() {
     }
@@ -93,5 +102,26 @@ public class User implements Serializable {
                 ", country='" + country + '\'' +
                 ", local=" + local +
                 '}';
+    }
+
+    public static class Phone implements Serializable {
+        private String phone;
+        private String mobile;
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(String mobile) {
+            this.mobile = mobile;
+        }
     }
 }

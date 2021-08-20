@@ -1,6 +1,7 @@
 package com.cwww.spring;
 
 
+import com.cwww.spring.ListDemo.App;
 import com.cwww.spring.ListDemo.ListDemo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -17,9 +18,14 @@ public class Test {
 
 
         ApplicationContext ac = new FileSystemXmlApplicationContext("jbasemaven/src/main/resources/spring.xml");
-//        List listDemo = ac.getBean("listDemo2", List.class);
-        final ListDemo bean = ac.getBean(ListDemo.class);
-        System.out.println(bean);
+        ((FileSystemXmlApplicationContext) ac).start();
+
+        final App bean = ac.getBean(App.class);
+        bean.hello();
+
+        //        List listDemo = ac.getBean("listDemo2", List.class);
+//        final ListDemo bean = ac.getBean(ListDemo.class);
+//        System.out.println(bean);
 
 //        final Object demo = ac.getBean("ListDemo");
 //        System.out.println(demo);

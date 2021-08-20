@@ -1,10 +1,16 @@
 package com.something.quartz;
 
+import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.quartz.JobBuilder.newJob;
+import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
+import static org.quartz.TriggerBuilder.newTrigger;
 
 /**
  * @author cWww
@@ -23,7 +29,28 @@ public class QuartzDemo {
 
             scheduler.start();
 
-            scheduler.shutdown();
+
+            // define the job and tie it to our HelloJob class
+            JobDetail job = newJob(HelloJob.class)
+                    .withIdentity("job1", "group1")
+                    //触发器失效以后继续存储job
+                    .storeDurably()
+                    .build();
+
+            // Trigger the job to run now, and then repeat every 40 seconds
+            Trigger trigger = newTrigger()
+                    .withIdentity("trigger1", "group1")
+                    .startNow()
+                    .withSchedule(simpleSchedule()
+                            .withIntervalInSeconds(3)
+                            .repeatForever())
+                    .build();
+
+            // Tell quartz to schedule the job using our trigger
+            scheduler.scheduleJob(job, trigger);
+
+
+//            scheduler.shutdown();
 
         } catch (SchedulerException e) {
             LOGGER.error("QuartzDemo",e);

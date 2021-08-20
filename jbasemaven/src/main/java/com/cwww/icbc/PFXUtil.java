@@ -291,7 +291,7 @@ public class PFXUtil {
 //
 //        String bucketName = "for-hybrisqas";
 //
-//        OSSClient ossClient = new OSSClient("https://oss-cn-hangzhou.aliyuncs.com", "LTAI4FagCkDuK1BM", "Gvth4nEm8SmIOwyX6Pjof60o4PSLEK");
+//        OSSClient ossClient = new OSSClient("https://oss-cn-hangzhou.aliyuncs.com", "", "");
 //
 //        ListObjectsRequest listObjectsRequest = new ListObjectsRequest(bucketName,null, null,null,maxKeys);
 //        ObjectListing objectlisting = ossClient.listObjects(listObjectsRequest);
@@ -301,8 +301,12 @@ public class PFXUtil {
 //            hasobj = false;
 //        }
 //
-//        OSSClient ossClient2 = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "LTAI7bDhQukclEg3", "hEGskx06RCLC6sCmDiUN07w9kF889F");
-//        String bucketName2 = "hybris";
+        OSSClient ossClient2 = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "", "");
+        String bucketName2 = "for-test1";
+        final GetObjectRequest getObjectRequest = new GetObjectRequest(bucketName2, "test/111.jpg");
+        final OSSObject object = ossClient2.getObject(getObjectRequest);
+        System.out.println(object.getObjectMetadata().getContentType());
+
 //
 //
 //        String markers = null;

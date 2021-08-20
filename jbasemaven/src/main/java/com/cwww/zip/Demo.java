@@ -236,7 +236,7 @@ public class Demo {
 
     public static void main(String[] args) throws Exception {
         /** 测试压缩方法1  */
-        FileOutputStream fos1 = new FileOutputStream(new File("D:/test.zip"));
+        FileOutputStream fos1 = new FileOutputStream(new File("D:/mytest01.zip"));
 //        Demo.toZip("D:\\前端\\student", fos1,true);
 
         OSSClient ossClient = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "", "");

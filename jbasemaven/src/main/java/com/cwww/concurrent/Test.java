@@ -1,7 +1,8 @@
 package com.cwww.concurrent;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author cWww
@@ -11,6 +12,6 @@ import org.apache.log4j.Logger;
  */
 public class Test {
 
-    private static final Logger LOGGER = LogManager.getLogger(Test.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Test.class);
 
 }

@@ -1,5 +1,8 @@
 package com.cwww.demo.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.GetObjectRequest;
 import com.aliyun.oss.model.OSSObject;
@@ -27,6 +30,7 @@ import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -37,7 +41,7 @@ import java.util.zip.ZipOutputStream;
  * @Description
  * @date: 2018/7/26  10:35
  */
-//@RestController
+//@RestDemoController
 @Controller
 @RequestMapping("/")
 @EnableAsync
@@ -45,10 +49,20 @@ public class HelloController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
 
-    private OSSClient ossClient = new OSSClient("https://oss-cn-beijing.aliyuncs.com", "", "");
+    private OSSClient ossClient = null;
+//            new OSSClient("https://oss-cn-beijing.aliyuncs.com", "", "");
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String hello(){
+        return "hello";
+    }
+
+    @RequestMapping(value = "/json",method = RequestMethod.POST)
+    @ResponseBody
+    public String json(@RequestBody List<Object> body){
+
+        LOGGER.info("body:{}",body);
+
         return "hello";
     }
 
@@ -59,7 +73,13 @@ public class HelloController {
 
     @RequestMapping(value = "/helloWorld")
     public void helloWorld(HttpServletRequest httpServletRequest){
-
+        try {
+            String json = StreamUtils.copyToString(httpServletRequest.getInputStream(),Charset.forName("UTF-8"));
+            final JSONArray jsonArray = JSON.parseArray(json);
+            LOGGER.info("jsonArray:{}",jsonArray);
+        } catch (IOException e) {
+            LOGGER.error("helloWorld",e);
+        }
         LOGGER.info("httpServletRequest url:{}",httpServletRequest.getRequestURL());
         LOGGER.info("httpServletRequest map:{}",httpServletRequest.getParameterMap());
         httpServletRequest.getParameterMap().forEach((k,v)->LOGGER.info("key:{},value:{}",k,v));
@@ -73,7 +93,7 @@ public class HelloController {
         return user;
     }
 
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    @GetMapping(value = "/user")
     @ResponseBody
     public Map<String,Object> user(){
         final Map<String,Object> map = new HashMap<>(3);

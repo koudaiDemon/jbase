@@ -1,9 +1,13 @@
 package com.cwww.base;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,6 +19,7 @@ import java.util.concurrent.TimeUnit;
  * @Description 用于测试demo
  * @date: 2019/3/19  9:27
  */
+@Slf4j
 public class DateDemo {
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -78,10 +83,11 @@ public class DateDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println(Instant.now().atOffset(ZoneOffset.ofHours(8)));
-        System.out.println(LocalDateTime.ofInstant(Instant.now(),ZoneId.systemDefault()).toLocalDate());
-        System.out.println(LocalDateTime.ofInstant(Instant.now(),ZoneId.systemDefault()).toLocalTime());
-        test2();
+//        System.out.println(Instant.now().atOffset(ZoneOffset.ofHours(8)));
+        log.info("date:[{}]" ,LocalDateTime.now().plus(3L, ChronoUnit.YEARS));
+//        System.out.println(LocalDateTime.ofInstant(Instant.now(),ZoneId.systemDefault()).toLocalDate());
+//        System.out.println(LocalDateTime.ofInstant(Instant.now(),ZoneId.systemDefault()).toLocalTime());
+//        test2();
     }
 
 

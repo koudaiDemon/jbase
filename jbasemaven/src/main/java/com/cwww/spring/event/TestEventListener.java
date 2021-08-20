@@ -1,5 +1,6 @@
 package com.cwww.spring.event;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -11,10 +12,11 @@ import org.springframework.stereotype.Component;
  * @date: 2018/7/2  14:25
  */
 @Component("testEventListener")
+@Slf4j
 public class TestEventListener implements ApplicationListener<TestEvent> {
 
     @Override
-    @Async
+//    @Async
     public void onApplicationEvent(TestEvent testEvent) {
         try {
             //静静的沉睡3秒钟
@@ -23,7 +25,7 @@ public class TestEventListener implements ApplicationListener<TestEvent> {
         {
             e.printStackTrace();
         }
-        System.out.println(testEvent.onEvent());
+        log.info(testEvent.onEvent());
     }
 
 }

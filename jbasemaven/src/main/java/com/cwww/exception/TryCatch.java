@@ -9,10 +9,7 @@ package com.cwww.exception;
 public class TryCatch {
 
 
-
-    public static void main(String[] args) {
-
-
+    public static void test(){
         try {
             StringBuilder sb = null;
             StringBuffer sb1 = null;
@@ -25,7 +22,25 @@ public class TryCatch {
         } finally {
             System.out.println("finally");
         }
+    }
 
+    public static String demo1() {
+        try {
+            return demo();
+        } finally {
+            System.out.println("hello");
+        }
+    }
+
+    public static String demo(){
+        final String demo = "demo";
+        System.out.println(demo);
+        return demo;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("====="+demo1());
     }
 
 }

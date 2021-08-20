@@ -1,5 +1,8 @@
 package com.cwww.base;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author cWww
  * @Title 位运算
@@ -14,6 +17,8 @@ public class Demo {
         Integer.parseInt("",2);
         //将一个10进制数变为2进制
         Integer.toBinaryString(123);
+
+        Long.toBinaryString(8796093087748L);
 
         //二进制1000
         int i1 = 8;
@@ -43,6 +48,19 @@ public class Demo {
         //00000000 00000000 00000000 00100110，此时二进制转原码为38,结果为-38
         //主要是因为0算作正数
         System.out.println(~a);
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        final Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            final Integer index = map.get(target - nums[i]);
+            if (null != index) {
+                return new int[]{index, i};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return new int[]{-1, -1};
     }
 
 }
