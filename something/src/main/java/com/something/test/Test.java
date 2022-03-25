@@ -1,7 +1,6 @@
 package com.something.test;
 
 import com.alibaba.fastjson.JSON;
-import com.sun.javafx.UnmodifiableArrayList;
 import org.springframework.beans.BeanUtils;
 
 import java.util.*;
