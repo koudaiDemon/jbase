@@ -28,6 +28,7 @@
         <jmh.version>1.26</jmh.version>
         <jol.version>0.14</jol.version>
         <avro.version>1.11.0</avro.version>
+        <snappy-java.version>1.1.8.4</snappy-java.version>
     </properties>
 
     <dependencies>
@@ -321,6 +322,12 @@
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
             <version>${avro.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+            <version>${snappy-java.version}</version>
         </dependency>
 
         <dependency>
