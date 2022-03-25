@@ -27,6 +27,7 @@
         <lucene.version>8.8.1</lucene.version>
         <jmh.version>1.26</jmh.version>
         <jol.version>0.14</jol.version>
+        <avro.version>1.11.0</avro.version>
     </properties>
 
     <dependencies>
@@ -81,16 +82,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>ch.qos.logback</groupId>-->
-        <!--<artifactId>logback-classic</artifactId>-->
-        <!--<version>${logback.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>ch.qos.logback</groupId>-->
-        <!--<artifactId>logback-core</artifactId>-->
-        <!--<version>${logback.version}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
@@ -216,21 +207,6 @@
         </dependency>
 
         <!--Drools-->
-        <!--<dependency>-->
-        <!--<groupId>org.drools</groupId>-->
-        <!--<artifactId>drools-compiler</artifactId>-->
-        <!--<version>6.0.0.CR1</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.kie</groupId>-->
-        <!--<artifactId>kie-api</artifactId>-->
-        <!--<version>6.0.0.CR1</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.drools</groupId>-->
-        <!--<artifactId>drools-compiler</artifactId>-->
-        <!--<version>6.0.0.CR1</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.drools</groupId>
@@ -253,11 +229,6 @@
             <artifactId>quartz-jobs</artifactId>
             <version>${quartz.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>com.drools</groupId>-->
-        <!--<artifactId>drools-demo</artifactId>-->
-        <!--<version>1.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-core</artifactId>
@@ -339,11 +310,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.apache.mahout</groupId>-->
-        <!--<artifactId>mahout-hdfs</artifactId>-->
-        <!--<version>${mahout.version}</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -351,6 +317,46 @@
             <version>${qlexpress.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>${avro.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
