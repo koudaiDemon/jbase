@@ -3,24 +3,14 @@ package com.cwww.icbc;
 
 
 import cn.com.infosec.icbc.ReturnValue;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+import cn.com.infosec.util.Base64;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import java.io.FileInputStream;
-import java.io.InputStream;
-import java.net.ConnectException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,27 +120,12 @@ public class Demo {
 //        System.out.println();
     }
 
-    public static byte[] getFromBASE64(InputStream inputStream) {
-        if (inputStream == null) {
-            return null;
-        } else {
-            BASE64Decoder decoder = new BASE64Decoder();
-
-            try {
-                return decoder.decodeBuffer(inputStream);
-            } catch (Exception var3) {
-                return null;
-            }
-        }
-    }
-
     public static String transforToBASE64(byte[] bytes) {
         if (bytes == null) {
             return null;
         } else {
-            BASE64Encoder base64Encoder = new BASE64Encoder();
             try {
-                return base64Encoder.encode(bytes);
+                return Base64.encode(bytes);
             } catch (Exception var3) {
                 return null;
             }
