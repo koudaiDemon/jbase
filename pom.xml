@@ -30,7 +30,7 @@
         <excle.poi.version>3.9</excle.poi.version>
         <httpcomponents.version>4.5.2</httpcomponents.version>
         <commons.lang.version>2.6</commons.lang.version>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <aliyun.oss>2.8.3</aliyun.oss>
     </properties>
     <modules>
