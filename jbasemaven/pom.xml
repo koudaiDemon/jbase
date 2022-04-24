@@ -138,11 +138,11 @@
             <version>${jsoniter.version}</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>mx.openpay</groupId>-->
-            <!--<artifactId>openpay-api-client</artifactId>-->
-            <!--<version>1.0.14</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

@@ -32,6 +32,7 @@
         <commons.lang.version>2.6</commons.lang.version>
         <lombok.version>1.18.24</lombok.version>
         <aliyun.oss>2.8.3</aliyun.oss>
+        <jmh.version>1.35</jmh.version>
     </properties>
     <modules>
         <module>jbaseMaven</module>
@@ -59,6 +60,12 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.oss}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -168,9 +175,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.aliyun.oss</groupId>
-            <artifactId>aliyun-sdk-oss</artifactId>
-            <version>${aliyun.oss}</version>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
