@@ -25,10 +25,11 @@
         <mahout.version>0.13.0</mahout.version>
         <qlexpress.version>3.2.4</qlexpress.version>
         <lucene.version>8.8.1</lucene.version>
-        <jmh.version>1.26</jmh.version>
         <jol.version>0.14</jol.version>
         <avro.version>1.11.0</avro.version>
         <snappy-java.version>1.1.8.4</snappy-java.version>
+        <kafka-streams.version>2.8.0</kafka-streams.version>
+        <h2-db.version>2.1.212</h2-db.version>
     </properties>
 
     <dependencies>
@@ -47,18 +48,6 @@
             <groupId>io.undertow</groupId>
             <artifactId>undertow-websockets-jsr</artifactId>
             <version>1.4.25.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -328,6 +317,18 @@
             <groupId>org.xerial.snappy</groupId>
             <artifactId>snappy-java</artifactId>
             <version>${snappy-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>${kafka-streams.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2-db.version}</version>
         </dependency>
 
         <dependency>
