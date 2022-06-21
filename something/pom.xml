@@ -19,7 +19,7 @@
         <alibaba.sentinel>1.5.1</alibaba.sentinel>
         <cjlib.version>2.2.2</cjlib.version>
         <dom4j.version>1.6.1</dom4j.version>
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <micrometer.version>1.1.0</micrometer.version>
         <metrics.version>4.1.0</metrics.version>
         <mahout.version>0.13.0</mahout.version>
