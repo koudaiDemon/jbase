@@ -26,7 +26,9 @@ public class Order {
     public static class OrderEntry {
         private Integer number;
         private Integer qty;
-        private Product product;
+        private String sku;
+        private String spu;
+//        private Product product;
         private BigDecimal price;
     }
 
